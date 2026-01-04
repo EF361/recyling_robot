@@ -1,28 +1,39 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, UltrasonicSensor, ColorSensor
-from pybricks.parameters import Port, Color, Button
+from pybricks.ev3devices import Motor, ColorSensor, UltrasonicSensor
+from pybricks.parameters import Port, Button, Color, Stop
 from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 
 # =============================================================================
-# ⚙️ SETTINGS (Your Final Values)
+# ⚙️ SETTINGS
 # =============================================================================
 
-# 1. Arm Settings
+# 1. Line Following
+BLACK_VAL = 7
+WHITE_VAL = 80
+THRESHOLD = 43       
+DRIVE_SPEED = 50     
+TURN_GAIN = -1.2     
+
+# 2. Station Confidence Settings (The Fix)
+# Instead of "5 in a row", we need a Score of 20.
+# +2 for match, -1 for miss. 
+# This filters short glints but catches messy stations.
+TRIGGER_SCORE = 20
+MAX_SCORE = 30 # Cap the score so it doesn't grow forever
+
+# 3. Fingerprints
+# GREEN: Blue/Green color. Refl < 23 (Opened slightly to catch deep green)
+GREEN_MAX_REFL = 23 
+
+# 4. Arm & Clamp
 ARM_SPEED = 200
-ARM_UP_POS = 0       # "Carrying" height
-ARM_DOWN_POS = 5     # "Grabbing" height (Floor level)
-ARM_SAFE_POS = -202  # "Driving" height (Safe clearance)
-
-# 2. Driving Settings
-LINE_THRESHOLD = 43  # (Black 7 + White 80) / 2
-DRIVE_SPEED = 50
-TURN_GAIN = -1.2
-
-# 3. Station Logic
-GREEN_REFLECT_MAX = 30
-YELLOW_REFLECT_MIN = 90
+ARM_UP_POS = 0       
+ARM_DOWN_POS = 5     
+ARM_SAFE_POS = -202  
+CLAMP_SPEED = 200
+CLAMP_FORCE = 40     
 
 # =============================================================================
 # 🔌 SETUP
@@ -31,13 +42,11 @@ ev3 = EV3Brick()
 ev3.speaker.set_volume(100)
 ev3.speaker.set_speech_options(speed=80, pitch=60)
 
-# Hardware
 left_motor = Motor(Port.D)
 right_motor = Motor(Port.C)
 arm_lift = Motor(Port.B)
 clamp = Motor(Port.A)
 
-# Sensors
 obstacle_sensor = UltrasonicSensor(Port.S1)
 clamp_sensor = ColorSensor(Port.S2)
 line_sensor = ColorSensor(Port.S3)
@@ -49,94 +58,66 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
 # =============================================================================
 
 def initialize():
-    """Runs ONCE at the start."""
     ev3.light.on(Color.ORANGE)
     ev3.speaker.say("System Start")
-    
-    # Reset Arm Logic
     arm_lift.reset_angle(0)
-    
-    # Lift to SAFE Height
-    print("Init: Moving Arm to Safe Height...")
     arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS)
     
-    # Close Clamp
-    print("Init: Closing Clamp...")
-    clamp.run_time(-ARM_SPEED, 1000) 
+    # Clamp Init
+    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.COAST, duty_limit=CLAMP_FORCE)
+    clamp.run_until_stalled(-CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
+    clamp.reset_angle(0)
     
     ev3.light.on(Color.GREEN)
-    ev3.speaker.say("Ready")
+    ev3.speaker.say("Confidence System Ready")
     wait(1000)
 
 def shutdown():
-    """Runs AUTOMATICALLY when Loop Ends."""
     ev3.light.on(Color.RED)
     robot.stop()
     ev3.speaker.say("Shutting down")
     
-    # Lower Arm safely
-    print("Shutdown: Lowering Arm...")
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    clamp.run_until_stalled(-CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
     
-    # Close Clamp
-    clamp.run_time(-ARM_SPEED, 1000)
-    
-    # Release motors
     left_motor.stop()
     right_motor.stop()
     arm_lift.stop()
     clamp.stop()
-    
     ev3.speaker.beep()
 
 # =============================================================================
-# 🧠 HELPER FUNCTIONS
+# 🧠 SMART SCORING SYSTEM
 # =============================================================================
 
-def get_station_id(sensor):
-    col = sensor.color()
-    ref = sensor.reflection()
-    
-    if col == Color.RED: return 3 # Orange
-    if (col == Color.BLUE or col == Color.YELLOW) and ref >= YELLOW_REFLECT_MIN: return 2 # Yellow
-    if (col == Color.BLUE or col == Color.GREEN) and ref <= GREEN_REFLECT_MAX and ref > 12: return 1 # Green
-    return 0
+def update_score(current_score, is_detected):
+    """
+    Increases score if detected (+2), decreases if not (-1).
+    Keeps score between 0 and MAX_SCORE.
+    """
+    if is_detected:
+        return min(current_score + 2, MAX_SCORE)
+    else:
+        return max(current_score - 1, 0)
 
-def pick_up_routine():
-    robot.stop()
-    ev3.speaker.say("Object detected")
-    
-    # Open -> Down -> Close -> Up
-    clamp.run_time(ARM_SPEED, 1000)
-    arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
-    clamp.run_time(-ARM_SPEED, 1000)       
-    arm_lift.run_target(ARM_SPEED, ARM_UP_POS)
-    
-    wait(500)
-    item_id = 0
-    detected = clamp_sensor.color()
-    
-    if detected == Color.GREEN: item_id = 1; ev3.speaker.say("This is Plastic")
-    elif detected == Color.YELLOW: item_id = 2; ev3.speaker.say("This is Paper")
-    elif detected == Color.RED: item_id = 3; ev3.speaker.say("This is Metal")
-    else: item_id = 3; ev3.speaker.say("Unknown")
+def check_station_fingerprints(color, reflection):
+    """
+    Returns 0 (None), 1 (Green), 2 (Yellow), 3 (Orange)
+    """
+    # GREEN CHECK (Blue/Green + Darker than 23)
+    # We allow slightly higher reflection because the Score System handles the noise.
+    if (color == Color.GREEN or color == Color.BLUE) and (reflection <= GREEN_MAX_REFL):
+        return 1
         
-    return item_id
+    # YELLOW CHECK (Yellow Color)
+    if color == Color.YELLOW:
+        return 2
 
-def deliver_routine():
-    robot.stop()
-    ev3.speaker.say("Dropping item")
-    
-    robot.turn(90)
-    robot.straight(300) 
-    
-    clamp.run_time(ARM_SPEED, 1000) # Open
-    wait(500)
-    
-    robot.straight(-300)
-    robot.turn(-90)
-    
-    clamp.run_time(-ARM_SPEED, 1000) # Close
+    # ORANGE CHECK (Red Color)
+    if color == Color.RED:
+        return 3
+        
+    return 0
 
 # =============================================================================
 # 🚀 MAIN LOOP
@@ -145,49 +126,75 @@ def deliver_routine():
 initialize() 
 
 try:
-    has_item = False
-    trash_type = 0
-
+    # Confidence Scores (Start at 0)
+    score_green = 0
+    score_yellow = 0
+    score_orange = 0
+    
+    cooldown_timer = 0 
+    
     while True:
-        # 1. SAFETY EXIT
+        # 1. Safety Exit
         if Button.CENTER in ev3.buttons.pressed():
             break 
-
-        # 2. CHECK SENSORS
-        # We check for stations constantly now
-        station = get_station_id(line_sensor)
-        dist = obstacle_sensor.distance()
-
-        # --- PRIORITY A: STATION DETECTED ---
-        if station != 0:
-            # We found a station! Identify it.
-            if station == 1: ev3.speaker.say("This is Green station")
-            elif station == 2: ev3.speaker.say("This is Yellow station")
-            elif station == 3: ev3.speaker.say("This is Orange station")
-
-            # Check if we need to DROP here
-            if has_item and (station == trash_type):
-                deliver_routine()
-                has_item = False
-                trash_type = 0
-                # Drive forward to clear the station logic
-                robot.straight(80)
             
-            # If not dropping, just WALK FORWARD (Don't turn!)
-            else:
-                # Drive straight 60mm to cross the color patch
-                robot.straight(60)
+        # 2. READ SENSORS
+        col = line_sensor.color()
+        ref = line_sensor.reflection()
+        
+        # 3. CHECK COOLDOWN 
+        if cooldown_timer > 0:
+            cooldown_timer -= 1
+            deviation = ref - THRESHOLD
+            turn_rate = deviation * TURN_GAIN
+            robot.drive(DRIVE_SPEED, turn_rate)
+            wait(10)
+            continue 
 
-        # --- PRIORITY B: PICK UP TRASH (Only if empty) ---
-        elif (not has_item) and (dist < 50):
-            trash_type = pick_up_routine()
-            has_item = True
+        # 4. IDENTIFY RAW SIGNAL
+        # What does the sensor "think" it sees right now?
+        raw_id = check_station_fingerprints(col, ref)
+        
+        # 5. UPDATE SCORES (The Magic Part)
+        # If raw_id is 1 (Green), score_green goes up, others go down.
+        score_green  = update_score(score_green,  raw_id == 1)
+        score_yellow = update_score(score_yellow, raw_id == 2)
+        score_orange = update_score(score_orange, raw_id == 3)
+        
+        # (Optional Debug: Uncomment to see scores in terminal)
+        # print(score_green, score_yellow, score_orange)
 
-        # --- PRIORITY C: LINE FOLLOWER (Default) ---
+        # 6. CHECK TRIGGERS
+        detected_station = 0
+        
+        if score_green >= TRIGGER_SCORE:
+            detected_station = 1
+            station_name = "Green Station"
+        elif score_yellow >= TRIGGER_SCORE:
+            detected_station = 2
+            station_name = "Yellow Station"
+        elif score_orange >= TRIGGER_SCORE:
+            detected_station = 3
+            station_name = "Orange Station"
+
+        # 7. EXECUTE
+        if detected_station > 0:
+            robot.stop()
+            ev3.speaker.say(station_name)
+            
+            # Reset ALL scores
+            score_green = 0
+            score_yellow = 0
+            score_orange = 0
+            
+            # Cooldown
+            cooldown_timer = 300 
+            
         else:
-            ref = line_sensor.reflection()
-            # Standard PID Follower
-            robot.drive(DRIVE_SPEED, (ref - LINE_THRESHOLD) * TURN_GAIN)
+            # Line Follower
+            deviation = ref - THRESHOLD
+            turn_rate = deviation * TURN_GAIN
+            robot.drive(DRIVE_SPEED, turn_rate)
         
         wait(10)
 
