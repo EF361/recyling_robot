@@ -60,3 +60,6 @@ light sensor color mode:
 5 is red
 6 is white
 7 is brown
+
+from the starting position: 
+60cm -> corner -> 104cm -> corner -> 48cm -> corner -> 5cm -> green station (width: 3cm) -> 29cm -> yellow station(width: 3cm ) ->37cm ->orange station (width: 3cm) -> 17cm -> corner -> starting position
