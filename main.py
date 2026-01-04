@@ -1,206 +1,195 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, UltrasonicSensor, ColorSensor
-from pybricks.parameters import Port, Stop, Direction, Color, Button
-from pybricks.tools import wait, StopWatch
+from pybricks.parameters import Port, Color, Button
+from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 
 # =============================================================================
-# ⚙️ CONFIGURATION / CONSTANTS (TUNE THESE NUMBERS!)
+# ⚙️ SETTINGS (Your Final Values)
 # =============================================================================
 
-# 1. Physical Dimensions (Measure your robot for best accuracy)
-WHEEL_DIAMETER = 56    # Millimeters (Standard EV3 wheel is 56)
-AXLE_TRACK = 114       # Millimeters (Distance between the centers of two wheels)
+# 1. Arm Settings
+ARM_SPEED = 200
+ARM_UP_POS = 0       # "Carrying" height
+ARM_DOWN_POS = 5     # "Grabbing" height (Floor level)
+ARM_SAFE_POS = -202  # "Driving" height (Safe clearance)
 
-# 2. Speeds
-DRIVE_SPEED = 150      # mm/s (Standard driving speed)
-TURN_SPEED = 100       # deg/s (Turning speed)
-ARM_SPEED = 200        # deg/s (Speed of lifting/clamping)
+# 2. Driving Settings
+LINE_THRESHOLD = 43  # (Black 7 + White 80) / 2
+DRIVE_SPEED = 50
+TURN_GAIN = -1.2
 
-# 3. Thresholds
-OBSTACLE_DIST = 50     # mm (5cm) - Stop distance for trash
-LINE_THRESHOLD = 35    # Reflected light value (Black < 35 < White)
-
-# 4. Delivery Distances
-DIST_TO_BIN = 300      # mm (30cm) - Distance to drive forward to the bin
-DROP_ANGLE = 90        # degrees - Angle to turn towards the bin
+# 3. Station Logic
+GREEN_REFLECT_MAX = 30
+YELLOW_REFLECT_MIN = 90
 
 # =============================================================================
-# 🔌 HARDWARE SETUP
+# 🔌 SETUP
 # =============================================================================
-
-# Initialize the EV3 Brick
 ev3 = EV3Brick()
-ev3.speaker.beep() # Beep to show we are ready
+ev3.speaker.set_volume(100)
+ev3.speaker.set_speech_options(speed=80, pitch=60)
 
-# Initialize Motors
-# NOTE: Check if your motors need 'positive_direction=Direction.COUNTERCLOCKWISE'
-# if they run backwards.
-left_motor = Motor(Port.D) 
+# Hardware
+left_motor = Motor(Port.D)
 right_motor = Motor(Port.C)
 arm_lift = Motor(Port.B)
 clamp = Motor(Port.A)
 
-# Initialize the DriveBase (Handles all movement math automatically)
-robot = DriveBase(left_motor, right_motor, wheel_diameter=WHEEL_DIAMETER, axle_track=AXLE_TRACK)
-robot.settings(DRIVE_SPEED, TURN_SPEED)
-
-# Initialize Sensors
-# Port 1: Obstacle (Ultrasonic)
-# Port 2: Trash Scanner (Color Sensor on Clamp)
-# Port 3: Line Reader (Color Sensor on Floor)
+# Sensors
 obstacle_sensor = UltrasonicSensor(Port.S1)
 clamp_sensor = ColorSensor(Port.S2)
 line_sensor = ColorSensor(Port.S3)
 
+robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
+
 # =============================================================================
-# 🧠 FUNCTIONS
+# 🛠️ SYSTEM FUNCTIONS
 # =============================================================================
 
-def line_follower_step():
-    """
-    Simple P-Controller for smooth line following.
-    Adjusts steering based on how 'black' or 'white' the floor is.
-    """
-    # Calculate the deviation from the threshold
-    # Reflection: Black=10, White=80. Threshold=45.
-    reflection = line_sensor.reflection()
-    deviation = reflection - LINE_THRESHOLD
+def initialize():
+    """Runs ONCE at the start."""
+    ev3.light.on(Color.ORANGE)
+    ev3.speaker.say("System Start")
     
-    # Turn gain: Higher number = sharper turns (more jittery)
-    # Lower number = smoother turns (might miss tight corners)
-    turn_rate = deviation * 1.2 
+    # Reset Arm Logic
+    arm_lift.reset_angle(0)
     
-    # Drive forward while turning
-    robot.drive(DRIVE_SPEED, turn_rate)
+    # Lift to SAFE Height
+    print("Init: Moving Arm to Safe Height...")
+    arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS)
+    
+    # Close Clamp
+    print("Init: Closing Clamp...")
+    clamp.run_time(-ARM_SPEED, 1000) 
+    
+    ev3.light.on(Color.GREEN)
+    ev3.speaker.say("Ready")
+    wait(1000)
+
+def shutdown():
+    """Runs AUTOMATICALLY when Loop Ends."""
+    ev3.light.on(Color.RED)
+    robot.stop()
+    ev3.speaker.say("Shutting down")
+    
+    # Lower Arm safely
+    print("Shutdown: Lowering Arm...")
+    arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    
+    # Close Clamp
+    clamp.run_time(-ARM_SPEED, 1000)
+    
+    # Release motors
+    left_motor.stop()
+    right_motor.stop()
+    arm_lift.stop()
+    clamp.stop()
+    
+    ev3.speaker.beep()
+
+# =============================================================================
+# 🧠 HELPER FUNCTIONS
+# =============================================================================
+
+def get_station_id(sensor):
+    col = sensor.color()
+    ref = sensor.reflection()
+    
+    if col == Color.RED: return 3 # Orange
+    if (col == Color.BLUE or col == Color.YELLOW) and ref >= YELLOW_REFLECT_MIN: return 2 # Yellow
+    if (col == Color.BLUE or col == Color.GREEN) and ref <= GREEN_REFLECT_MAX and ref > 12: return 1 # Green
+    return 0
 
 def pick_up_routine():
-    """
-    Sequence: Stop -> Open -> Lower -> Close -> Raise -> SCAN COLOR -> Return Type
-    """
-    # 1. Grab Logic (Same as before)
-    clamp.run_time(ARM_SPEED, 1000)          # Open
-    arm_lift.run_angle(ARM_SPEED, 90)        # Lower
-    clamp.run_time(-ARM_SPEED, 1000)         # Close
-    arm_lift.run_target(ARM_SPEED, 0)        # Raise
+    robot.stop()
+    ev3.speaker.say("Object detected")
     
-    wait(500) # Pause to let item stabilize
+    # Open -> Down -> Close -> Up
+    clamp.run_time(ARM_SPEED, 1000)
+    arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    clamp.run_time(-ARM_SPEED, 1000)       
+    arm_lift.run_target(ARM_SPEED, ARM_UP_POS)
     
-    # 2. Identify Logic (The Speaking Part)
+    wait(500)
+    item_id = 0
     detected = clamp_sensor.color()
-    item_type = 0
     
-    if detected == Color.GREEN:
-        # 🗣️ NEW: Specific Voice Line
-        ev3.speaker.say("This is plastic")
-        item_type = 1
+    if detected == Color.GREEN: item_id = 1; ev3.speaker.say("This is Plastic")
+    elif detected == Color.YELLOW: item_id = 2; ev3.speaker.say("This is Paper")
+    elif detected == Color.RED: item_id = 3; ev3.speaker.say("This is Metal")
+    else: item_id = 3; ev3.speaker.say("Unknown")
         
-    elif detected == Color.YELLOW:
-        # 🗣️ NEW: Specific Voice Line
-        ev3.speaker.say("This is paper")
-        item_type = 2
-        
-    elif detected == Color.RED:
-        # 🗣️ NEW: Specific Voice Line
-        ev3.speaker.say("This is metal") # Or "This is Aluminum"
-        item_type = 3 
-        
-    else:
-        ev3.speaker.say("Unknown object")
-        item_type = 3 
-
-    return item_type
+    return item_id
 
 def deliver_routine():
-    """
-    Sequence: Turn 90 -> Drive -> Drop -> Reverse -> Turn 180 (or back 90)
-    """
     robot.stop()
-    ev3.speaker.beep(500, 100) # High pitch beep
+    ev3.speaker.say("Dropping item")
     
-    # 1. Turn towards bin (Right turn = positive angle)
-    robot.turn(DROP_ANGLE)
+    robot.turn(90)
+    robot.straight(300) 
     
-    # 2. Drive to bin
-    robot.straight(DIST_TO_BIN)
-    
-    # 3. Drop Item
     clamp.run_time(ARM_SPEED, 1000) # Open
     wait(500)
     
-    # 4. Return
-    robot.straight(-DIST_TO_BIN) # Drive backwards same distance
+    robot.straight(-300)
+    robot.turn(-90)
     
-    # 5. Realign to line
-    # NOTE: If we turned Right to face bin, turning Left (negative) brings us back.
-    robot.turn(-DROP_ANGLE) 
-    
-    # Close clamp to be ready for next one (optional)
-    clamp.run_time(-ARM_SPEED, 1000)
+    clamp.run_time(-ARM_SPEED, 1000) # Close
 
 # =============================================================================
-# 🚀 MAIN PROGRAM LOOP
+# 🚀 MAIN LOOP
 # =============================================================================
 
-# State Variables
-has_item = False
-trash_type = 0 # 0=None, 1=Green, 2=Yellow, 3=Red
+initialize() 
 
-# Initial Arm Setup (Safety)
-ev3.light.on(Color.ORANGE)
-arm_lift.run_target(ARM_SPEED, 0) # Reset arm to 'zero' position
-wait(1000)
-ev3.light.on(Color.GREEN)
+try:
+    has_item = False
+    trash_type = 0
 
-while True:
-    # --- MODE A: SEARCHING ---
-    if not has_item:
-        # Check for obstacle
+    while True:
+        # 1. SAFETY EXIT
+        if Button.CENTER in ev3.buttons.pressed():
+            break 
+
+        # 2. CHECK SENSORS
+        # We check for stations constantly now
+        station = get_station_id(line_sensor)
         dist = obstacle_sensor.distance()
-        
-        if dist < OBSTACLE_DIST:
-            # 🗣️ NEW: Say "Object Detected" immediately
-            robot.stop()
-            ev3.speaker.say("Object detected") 
+
+        # --- PRIORITY A: STATION DETECTED ---
+        if station != 0:
+            # We found a station! Identify it.
+            if station == 1: ev3.speaker.say("This is Green station")
+            elif station == 2: ev3.speaker.say("This is Yellow station")
+            elif station == 3: ev3.speaker.say("This is Orange station")
+
+            # Check if we need to DROP here
+            if has_item and (station == trash_type):
+                deliver_routine()
+                has_item = False
+                trash_type = 0
+                # Drive forward to clear the station logic
+                robot.straight(80)
             
-            # Then start the pickup
+            # If not dropping, just WALK FORWARD (Don't turn!)
+            else:
+                # Drive straight 60mm to cross the color patch
+                robot.straight(60)
+
+        # --- PRIORITY B: PICK UP TRASH (Only if empty) ---
+        elif (not has_item) and (dist < 50):
             trash_type = pick_up_routine()
             has_item = True
-        else:
-            # No trash, follow the line
-            line_follower_step()
 
-    # --- MODE B: CARRYING (DELIVERY) ---
-    else:
-        # Check floor color for Bin Markers
-        floor_color = line_sensor.color()
-        
-        # Check Matches
-        match_found = False
-        
-        if floor_color == Color.GREEN and trash_type == 1:
-            match_found = True
-        elif floor_color == Color.YELLOW and trash_type == 2:
-            match_found = True
-        elif floor_color == Color.RED and trash_type == 3:
-            match_found = True
-            
-        if match_found:
-            # We are at the correct bin!
-            deliver_routine()
-            
-            # Reset state
-            has_item = False
-            trash_type = 0
-            
-            # Move forward a tiny bit to get past the color marker
-            # so we don't detect it again immediately
-            robot.straight(50) 
-            
+        # --- PRIORITY C: LINE FOLLOWER (Default) ---
         else:
-            # Not at the right bin yet, keep following line
-            line_follower_step()
+            ref = line_sensor.reflection()
+            # Standard PID Follower
+            robot.drive(DRIVE_SPEED, (ref - LINE_THRESHOLD) * TURN_GAIN)
+        
+        wait(10)
 
-    # Small wait to save CPU
-    wait(10)
+finally:
+    shutdown()

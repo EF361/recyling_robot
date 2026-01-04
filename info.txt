@@ -17,12 +17,12 @@ trash type:
 
 
 color green: 
-1. color: 3
+1. color: 2
 2. ambient: 2
 3. reflect:  20-24
 
 color yellow: 
-1. color: 4
+1. color: 2
 2. ambient: 2 
 3. reflect: 100
 
@@ -50,3 +50,13 @@ aluminium:
 1. color: 1-2
 2. reflect: 10-12
 3. ambient: 0-1
+
+light sensor color mode: 
+0 is no color
+1 is black
+2 is blue
+3 is green 
+4 is yellow
+5 is red
+6 is white
+7 is brown
