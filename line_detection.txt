@@ -1,0 +1,1184 @@
+# the reading for 3 rounds (include color, reflection, ambient)
+
+DATA LOG STARTING - 3 ROUNDS
+Format: Color | Refl | Amb | TurnRate | Notes
+--------------------------------------------------
+Color.BLACK  | 9    | -4   | 43   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 11   | 1    | 40   | [CORNER] 
+Color.BLUE   | 38   | 2    | 8    | [COLOR DETECTED!] 
+Color.WHITE  | 74   | 2    | -34  | 
+Color.WHITE  | 95   | 3    | -60  | [CORNER] 
+Color.WHITE  | 97   | 3    | -62  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.BLUE   | 22   | 1    | 27   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.GREEN  | 10   | 0    | 42   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 26   | 2    | 22   | [COLOR DETECTED!] 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 65   | 2    | -24  | 
+Color.WHITE  | 72   | 3    | -32  | 
+Color.WHITE  | 70   | 3    | -30  | 
+Color.WHITE  | 60   | 2    | -18  | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 35   | 1    | 12   | 
+Color.BLUE   | 33   | 1    | 14   | [COLOR DETECTED!] 
+Color.BLUE   | 35   | 2    | 12   | [COLOR DETECTED!] 
+Color.BLUE   | 38   | 1    | 8    | [COLOR DETECTED!] 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 56   | 2    | -13  | 
+Color.WHITE  | 56   | 2    | -13  | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 35   | 2    | 12   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.BLUE   | 25   | 1    | 24   | [COLOR DETECTED!] 
+Color.BLUE   | 25   | 1    | 24   | [COLOR DETECTED!] 
+Color.BLUE   | 32   | 2    | 15   | [COLOR DETECTED!] 
+Color.WHITE  | 69   | 2    | -28  | 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 84   | 3    | -46  | [CORNER] 
+Color.WHITE  | 83   | 3    | -45  | [CORNER] 
+Color.WHITE  | 82   | 3    | -44  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 87   | 4    | -50  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 88   | 2    | -51  | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 6    | 0    | 46   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 15   | 0    | 36   | 
+Color.GREEN  | 14   | 1    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 14   | 0    | 37   | 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 11   | 1    | 40   | [CORNER] 
+Color.BLACK  | 17   | 0    | 33   | 
+Color.BLUE   | 46   | 2    | -1   | [COLOR DETECTED!] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 88   | 4    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 23   | 1    | 26   | 
+Color.BLACK  | 12   | 1    | 39   | 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 12   | 1    | 39   | 
+Color.BLUE   | 16   | 1    | 34   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 30   | 1    | 18   | [COLOR DETECTED!] 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 61   | 2    | -19  | 
+Color.WHITE  | 73   | 2    | -33  | 
+Color.WHITE  | 58   | 2    | -15  | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 32   | 1    | 15   | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 41   | 1    | 4    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 95   | 4    | -60  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 95   | 3    | -60  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 6    | 0    | 46   | [CORNER] 
+Color.BLACK  | 15   | 1    | 36   | 
+Color.BLACK  | 11   | 1    | 40   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLUE   | 41   | 2    | 4    | [COLOR DETECTED!] 
+Color.WHITE  | 83   | 3    | -45  | [CORNER] 
+Color.WHITE  | 98   | 3    | -63  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 87   | 4    | -50  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.BLUE   | 13   | 1    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 17   | 0    | 33   | 
+Color.BLUE   | 13   | 0    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 17   | 1    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 30   | 1    | 18   | [COLOR DETECTED!] 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 61   | 3    | -19  | 
+Color.WHITE  | 63   | 2    | -21  | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 37   | 2    | 9    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 56   | 2    | -13  | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 33   | 2    | 14   | 
+Color.BLUE   | 36   | 2    | 10   | [COLOR DETECTED!] 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.BLUE   | 32   | 1    | 15   | [COLOR DETECTED!] 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 96   | 4    | -61  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 99   | 3    | -64  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.WHITE  | 87   | 4    | -50  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.BLUE   | 10   | 0    | 42   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 9    | 1    | 43   | [CORNER] 
+Color.BLUE   | 36   | 1    | 10   | [COLOR DETECTED!] 
+Color.BLUE   | 15   | 1    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 0    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 31   | 1    | 16   | [COLOR DETECTED!] 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 82   | 3    | -44  | [CORNER] 
+Color.WHITE  | 85   | 2    | -48  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 79   | 3    | -40  | [CORNER] 
+Color.WHITE  | 32   | 2    | 15   | 
+Color.BLUE   | 11   | 0    | 40   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 15   | 1    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 35   | 2    | 12   | [COLOR DETECTED!] 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 59   | 3    | -16  | 
+Color.WHITE  | 59   | 2    | -16  | 
+Color.WHITE  | 58   | 2    | -15  | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 80   | 2    | -42  | [CORNER] 
+Color.BLUE   | 100  | 2    | -66  | [CORNER] [COLOR DETECTED!] 
+Color.BLUE   | 98   | 2    | -63  | [CORNER] [COLOR DETECTED!] 
+Color.BLACK  | 9    | 1    | 43   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.GREEN  | 14   | 0    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 13   | 0    | 38   | 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLUE   | 8    | 1    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 9    | 1    | 43   | [CORNER] 
+Color.BLUE   | 27   | 2    | 21   | [COLOR DETECTED!] 
+Color.WHITE  | 60   | 2    | -18  | 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 86   | 4    | -49  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 26   | 1    | 22   | 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 11   | 1    | 40   | [CORNER] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 31   | 2    | 16   | [COLOR DETECTED!] 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 63   | 3    | -21  | 
+Color.WHITE  | 68   | 3    | -27  | 
+Color.WHITE  | 64   | 3    | -22  | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 38   | 1    | 8    | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 33   | 2    | 14   | 
+Color.BLUE   | 36   | 2    | 10   | [COLOR DETECTED!] 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.BLUE   | 100  | 2    | -66  | [CORNER] [COLOR DETECTED!] 
+Color.RED    | 97   | 1    | -62  | [CORNER] [COLOR DETECTED!] 
+Color.BROWN  | 8    | 0    | 44   | [CORNER] [COLOR DETECTED!] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 15   | 1    | 36   | 
+Color.BLACK  | 10   | 1    | 42   | [CORNER] 
+Color.BLACK  | 10   | 1    | 42   | [CORNER] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 55   | 2    | -12  | 
+Color.WHITE  | 78   | 3    | -39  | 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 81   | 3    | -43  | [CORNER] 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.BLUE   | 16   | 1    | 34   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 14   | 1    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 21   | 1    | 28   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 37   | 2    | 9    | [COLOR DETECTED!] 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 56   | 3    | -13  | 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 89   | 4    | -52  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 89   | 2    | -52  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 95   | 4    | -60  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 97   | 3    | -62  | [CORNER] 
+Color.BLUE   | 12   | 1    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 8    | 1    | 44   | [CORNER] 
+Color.BLUE   | 9    | 1    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 8    | 0    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 7    | 0    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLUE   | 12   | 0    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 26   | 1    | 22   | [COLOR DETECTED!] 
+Color.WHITE  | 64   | 2    | -22  | 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 83   | 3    | -45  | [CORNER] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.GREEN  | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 14   | 0    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 38   | 2    | 8    | [COLOR DETECTED!] 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 65   | 2    | -24  | 
+Color.WHITE  | 70   | 3    | -30  | 
+Color.WHITE  | 69   | 2    | -28  | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.BLUE   | 34   | 2    | 13   | [COLOR DETECTED!] 
+Color.BLUE   | 32   | 2    | 15   | [COLOR DETECTED!] 
+Color.BLUE   | 36   | 2    | 10   | [COLOR DETECTED!] 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 32   | 2    | 15   | 
+Color.BLUE   | 29   | 1    | 19   | [COLOR DETECTED!] 
+Color.BLUE   | 33   | 1    | 14   | [COLOR DETECTED!] 
+Color.WHITE  | 70   | 2    | -30  | 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.BLUE   | 12   | 1    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 7    | 0    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 13   | 1    | 38   | 
+Color.BLACK  | 10   | 1    | 42   | [CORNER] 
+Color.BLACK  | 6    | 1    | 46   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 7    | 1    | 45   | [CORNER] 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 29   | 2    | 19   | [COLOR DETECTED!] 
+Color.WHITE  | 59   | 2    | -16  | 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 60   | 2    | -18  | 
+Color.BLUE   | 11   | 0    | 40   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLUE   | 11   | 1    | 40   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 27   | 1    | 21   | [COLOR DETECTED!] 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 64   | 2    | -22  | 
+Color.WHITE  | 62   | 2    | -20  | 
+Color.WHITE  | 59   | 2    | -16  | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 38   | 1    | 8    | 
+Color.BLUE   | 33   | 1    | 14   | [COLOR DETECTED!] 
+Color.BLUE   | 37   | 1    | 9    | [COLOR DETECTED!] 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 37   | 2    | 9    | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 95   | 3    | -60  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.WHITE  | 99   | 4    | -64  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 25   | 1    | 24   | 
+Color.BLUE   | 12   | 1    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLUE   | 15   | 0    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 41   | 2    | 4    | [COLOR DETECTED!] 
+Color.WHITE  | 78   | 3    | -39  | 
+Color.WHITE  | 97   | 4    | -62  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 75   | 2    | -36  | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.BLUE   | 18   | 1    | 32   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 33   | 1    | 14   | [COLOR DETECTED!] 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 73   | 2    | -33  | 
+Color.WHITE  | 37   | 1    | 9    | 
+Color.BLUE   | 27   | 1    | 21   | [COLOR DETECTED!] 
+Color.BLUE   | 30   | 1    | 18   | [COLOR DETECTED!] 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 58   | 2    | -15  | 
+Color.WHITE  | 58   | 2    | -15  | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.BLUE   | 32   | 1    | 15   | [COLOR DETECTED!] 
+Color.BLUE   | 33   | 1    | 14   | [COLOR DETECTED!] 
+Color.BLUE   | 41   | 1    | 4    | [COLOR DETECTED!] 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 36   | 2    | 10   | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 80   | 3    | -42  | [CORNER] 
+Color.WHITE  | 99   | 3    | -64  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 97   | 3    | -62  | [CORNER] 
+Color.WHITE  | 97   | 3    | -62  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 97   | 3    | -62  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.BLUE   | 11   | 0    | 40   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 13   | 1    | 38   | 
+Color.BLACK  | 13   | 0    | 38   | 
+Color.BLUE   | 34   | 1    | 13   | [COLOR DETECTED!] 
+Color.BLUE   | 35   | 1    | 12   | [COLOR DETECTED!] 
+Color.BLUE   | 19   | 0    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 18   | 1    | 32   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 25   | 1    | 24   | [COLOR DETECTED!] 
+Color.BLUE   | 42   | 2    | 3    | [COLOR DETECTED!] 
+Color.WHITE  | 69   | 2    | -28  | 
+Color.WHITE  | 81   | 2    | -43  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 80   | 3    | -42  | [CORNER] 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 15   | 0    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 29   | 2    | 19   | [COLOR DETECTED!] 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 55   | 2    | -12  | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 82   | 2    | -44  | [CORNER] 
+Color.BLUE   | 100  | 2    | -66  | [CORNER] [COLOR DETECTED!] 
+Color.BLUE   | 98   | 2    | -63  | [CORNER] [COLOR DETECTED!] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.GREEN  | 8    | 0    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 8    | 0    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 6    | 0    | 46   | [CORNER] 
+Color.BLACK  | 14   | 1    | 37   | 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 35   | 2    | 12   | [COLOR DETECTED!] 
+Color.WHITE  | 64   | 3    | -22  | 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 4    | -51  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.BLUE   | 12   | 0    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 9    | 1    | 43   | [CORNER] 
+Color.BLUE   | 10   | 1    | 42   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 13   | 1    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 24   | 1    | 25   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 59   | 2    | -16  | 
+Color.WHITE  | 71   | 2    | -31  | 
+Color.WHITE  | 73   | 2    | -33  | 
+Color.WHITE  | 58   | 2    | -15  | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 31   | 2    | 16   | 
+Color.BLUE   | 33   | 2    | 14   | [COLOR DETECTED!] 
+Color.BLUE   | 38   | 2    | 8    | [COLOR DETECTED!] 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.BLUE   | 44   | 2    | 1    | [COLOR DETECTED!] 
+Color.WHITE  | 100  | 2    | -66  | [CORNER] 
+Color.RED    | 97   | 2    | -62  | [CORNER] [COLOR DETECTED!] 
+Color.YELLOW | 27   | 0    | 21   | [COLOR DETECTED!] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 16   | 1    | 34   | 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 15   | 0    | 36   | 
+Color.BLUE   | 22   | 1    | 27   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 75   | 3    | -36  | 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 66   | 2    | -25  | 
+Color.BLUE   | 30   | 2    | 18   | [COLOR DETECTED!] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 17   | 1    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 31   | 1    | 16   | [COLOR DETECTED!] 
+Color.BLUE   | 28   | 2    | 20   | [COLOR DETECTED!] 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 57   | 3    | -14  | 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 88   | 4    | -51  | [CORNER] 
+Color.WHITE  | 89   | 4    | -52  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 97   | 4    | -62  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.BLUE   | 10   | 1    | 42   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 7    | 0    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 11   | 1    | 40   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 10   | 1    | 42   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 7    | 1    | 45   | [CORNER] 
+Color.BLUE   | 7    | 1    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 8    | 0    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 11   | 1    | 40   | [CORNER] 
+Color.BLUE   | 18   | 1    | 32   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 45   | 2    | 0    | [COLOR DETECTED!] 
+Color.WHITE  | 83   | 3    | -45  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 73   | 2    | -33  | 
+Color.BLUE   | 13   | 1    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.GREEN  | 8    | 0    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLUE   | 15   | 0    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 28   | 1    | 20   | [COLOR DETECTED!] 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 57   | 2    | -14  | 
+Color.WHITE  | 62   | 2    | -20  | 
+Color.WHITE  | 61   | 3    | -19  | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 39   | 1    | 7    | 
+Color.BLUE   | 36   | 2    | 10   | [COLOR DETECTED!] 
+Color.BLUE   | 37   | 1    | 9    | [COLOR DETECTED!] 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.BLUE   | 28   | 1    | 20   | [COLOR DETECTED!] 
+Color.BLUE   | 25   | 1    | 24   | [COLOR DETECTED!] 
+Color.BLUE   | 37   | 2    | 9    | [COLOR DETECTED!] 
+Color.WHITE  | 80   | 3    | -42  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 86   | 4    | -49  | [CORNER] 
+Color.WHITE  | 88   | 4    | -51  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 4    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 14   | 0    | 37   | 
+Color.BLACK  | 9    | 1    | 43   | [CORNER] 
+Color.BLACK  | 16   | 1    | 34   | 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 10   | 1    | 42   | [CORNER] 
+Color.GREEN  | 14   | 0    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 6    | 0    | 46   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.GREEN  | 15   | 0    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLUE   | 9    | 0    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 13   | 0    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 28   | 1    | 20   | [COLOR DETECTED!] 
+Color.WHITE  | 67   | 2    | -26  | 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 93   | 3    | -57  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.BLUE   | 14   | 1    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 1    | 42   | [CORNER] 
+Color.BLUE   | 13   | 1    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 22   | 1    | 27   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 34   | 1    | 13   | [COLOR DETECTED!] 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 58   | 2    | -15  | 
+Color.WHITE  | 59   | 2    | -16  | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.BLUE   | 35   | 2    | 12   | [COLOR DETECTED!] 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.BLUE   | 36   | 2    | 10   | [COLOR DETECTED!] 
+Color.WHITE  | 38   | 1    | 8    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 61   | 2    | -19  | 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 94   | 4    | -58  | [CORNER] 
+Color.WHITE  | 94   | 4    | -58  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 4    | -52  | [CORNER] 
+Color.WHITE  | 92   | 4    | -56  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 95   | 4    | -60  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.WHITE  | 99   | 4    | -64  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.BLUE   | 12   | 1    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 12   | 1    | 39   | 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLUE   | 12   | 0    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 41   | 2    | 4    | [COLOR DETECTED!] 
+Color.WHITE  | 80   | 3    | -42  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 81   | 3    | -43  | [CORNER] 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.BLUE   | 22   | 1    | 27   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 14   | 1    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 28   | 1    | 20   | [COLOR DETECTED!] 
+Color.WHITE  | 38   | 2    | 8    | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 56   | 2    | -13  | 
+Color.WHITE  | 55   | 2    | -12  | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 43   | 2    | 2    | 
+Color.WHITE  | 66   | 2    | -25  | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.BLUE   | 27   | 1    | 21   | [COLOR DETECTED!] 
+Color.BLUE   | 35   | 2    | 12   | [COLOR DETECTED!] 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.BLUE   | 39   | 2    | 7    | [COLOR DETECTED!] 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 37   | 2    | 9    | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 68   | 3    | -27  | 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.WHITE  | 100  | 3    | -66  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 97   | 3    | -62  | [CORNER] 
+Color.WHITE  | 99   | 4    | -64  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 4    | -52  | [CORNER] 
+Color.WHITE  | 95   | 3    | -60  | [CORNER] 
+Color.WHITE  | 100  | 4    | -66  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 40   | 1    | 6    | 
+Color.BLACK  | 10   | 1    | 42   | [CORNER] 
+Color.BLACK  | 15   | 1    | 36   | 
+Color.BLUE   | 29   | 1    | 19   | [COLOR DETECTED!] 
+Color.BLUE   | 39   | 1    | 7    | [COLOR DETECTED!] 
+Color.BLUE   | 20   | 0    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 19   | 0    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 0    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 21   | 1    | 28   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 18   | 1    | 32   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 21   | 1    | 28   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 40   | 2    | 6    | [COLOR DETECTED!] 
+Color.WHITE  | 64   | 2    | -22  | 
+Color.WHITE  | 89   | 4    | -52  | [CORNER] 
+Color.WHITE  | 95   | 3    | -60  | [CORNER] 
+Color.WHITE  | 93   | 4    | -57  | [CORNER] 
+Color.WHITE  | 82   | 3    | -44  | [CORNER] 
+Color.WHITE  | 35   | 2    | 12   | 
+Color.BLUE   | 12   | 0    | 39   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 14   | 0    | 37   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 18   | 1    | 32   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 23   | 1    | 26   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 56   | 2    | -13  | 
+Color.WHITE  | 64   | 3    | -22  | 
+Color.WHITE  | 60   | 2    | -18  | 
+Color.WHITE  | 51   | 2    | -7   | 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 40   | 2    | 6    | 
+Color.WHITE  | 42   | 2    | 3    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 50   | 2    | -6   | 
+Color.WHITE  | 52   | 2    | -8   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 41   | 2    | 4    | 
+Color.WHITE  | 39   | 2    | 7    | 
+Color.WHITE  | 100  | 2    | -66  | [CORNER] 
+Color.BLUE   | 100  | 2    | -66  | [CORNER] [COLOR DETECTED!] 
+Color.YELLOW | 90   | 2    | -54  | [CORNER] [COLOR DETECTED!] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.GREEN  | 7    | 0    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLUE   | 7    | 0    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 15   | 1    | 36   | 
+Color.BLACK  | 13   | 1    | 38   | 
+Color.BLACK  | 7    | 1    | 45   | [CORNER] 
+Color.BLUE   | 21   | 1    | 28   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 79   | 3    | -40  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 84   | 3    | -46  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 94   | 4    | -58  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 87   | 4    | -50  | [CORNER] 
+Color.WHITE  | 57   | 2    | -14  | 
+Color.BLUE   | 13   | 1    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 12   | 1    | 39   | 
+Color.BLUE   | 8    | 1    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 37   | 2    | 9    | [COLOR DETECTED!] 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 69   | 3    | -28  | 
+Color.WHITE  | 75   | 3    | -36  | 
+Color.WHITE  | 71   | 2    | -31  | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 37   | 2    | 9    | 
+Color.BLUE   | 33   | 1    | 14   | [COLOR DETECTED!] 
+Color.BLUE   | 31   | 1    | 16   | [COLOR DETECTED!] 
+Color.BLUE   | 33   | 2    | 14   | [COLOR DETECTED!] 
+Color.WHITE  | 44   | 2    | 1    | 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 80   | 2    | -42  | [CORNER] 
+Color.RED    | 98   | 2    | -63  | [CORNER] [COLOR DETECTED!] 
+Color.RED    | 96   | 2    | -61  | [CORNER] [COLOR DETECTED!] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLACK  | 8    | 0    | 44   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLACK  | 7    | 0    | 45   | [CORNER] 
+Color.BLACK  | 11   | 0    | 40   | [CORNER] 
+Color.BLUE   | 19   | 1    | 31   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 47   | 2    | -2   | 
+Color.WHITE  | 74   | 3    | -34  | 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 79   | 3    | -40  | [CORNER] 
+Color.BLUE   | 22   | 1    | 27   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 13   | 1    | 38   | 
+Color.BLUE   | 28   | 2    | 20   | [COLOR DETECTED!] 
+Color.WHITE  | 72   | 3    | -32  | 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 84   | 3    | -46  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 91   | 4    | -55  | [CORNER] 
+Color.WHITE  | 92   | 3    | -56  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 88   | 3    | -51  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 86   | 3    | -49  | [CORNER] 
+Color.WHITE  | 87   | 3    | -50  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 91   | 3    | -55  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 4    | -54  | [CORNER] 
+Color.WHITE  | 94   | 3    | -58  | [CORNER] 
+Color.WHITE  | 98   | 4    | -63  | [CORNER] 
+Color.BLUE   | 10   | 1    | 42   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 9    | 1    | 43   | [CORNER] 
+Color.BLUE   | 7    | 1    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 7    | 0    | 45   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 8    | 1    | 44   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 10   | 0    | 42   | [CORNER] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 9    | 0    | 43   | [CORNER] 
+Color.BLACK  | 12   | 0    | 39   | 
+Color.BLUE   | 9    | 1    | 43   | [CORNER] [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 20   | 1    | 30   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.WHITE  | 57   | 2    | -14  | 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 85   | 3    | -48  | [CORNER] 
+Color.WHITE  | 90   | 3    | -54  | [CORNER] 
+Color.WHITE  | 89   | 3    | -52  | [CORNER] 
+Color.WHITE  | 48   | 2    | -3   | 
+Color.BLUE   | 17   | 0    | 33   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 13   | 0    | 38   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 15   | 0    | 36   | [COLOR DETECTED!] [GREEN/BLUE LOW REFL] 
+Color.BLUE   | 26   | 1    | 22   | [COLOR DETECTED!] 
+Color.BLUE   | 38   | 2    | 8    | [COLOR DETECTED!] 
+Color.WHITE  | 53   | 2    | -9   | 
+Color.WHITE  | 55   | 2    | -12  | 
+Color.WHITE  | 54   | 2    | -10  | 
+Color.WHITE  | 49   | 2    | -4   | 
+Color.WHITE  | 45   | 2    | 0    | 
+Color.WHITE  | 46   | 2    | -1   | 
+Color.WHITE  | 46   | 2    | -1   | 
+Program ended by stop button
+----------
+Completed successfully.
