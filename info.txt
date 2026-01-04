@@ -1,0 +1,52 @@
+port 1: ultrasonic sensor (object detection)
+port 2: light sensor on the clamp (identify items)
+port 3: line detection light sensor (follow the line)
+
+port a: clamp medium motor (open and close for the clamp)
+port b: clamp up-down motor (move the clamp up down)
+port c: right wheel motor 
+port d: left wheel motor
+
+brainstorming: 
+https://gemini.google.com/app/8ed14680446f7b79
+
+trash type: 
+1 = Green (Plastic)
+2 = Yellow (Paper)
+3 = Red/Orange (Others)
+
+
+color green: 
+1. color: 3
+2. ambient: 2
+3. reflect:  20-24
+
+color yellow: 
+1. color: 4
+2. ambient: 2 
+3. reflect: 100
+
+color orange: 
+1. color: 5 
+2. ambient: 2
+3. reflect: 100
+
+paper: 
+1. color: 6
+2. reflect: 46-48
+3. ambient: 3-4
+
+water bottle: 
+1. color: 1
+2. reflect: 8-10 
+3. ambient: 2
+
+yellow plastic: 
+1. color: 4 
+2. reflect: 60-80
+3. ambient: 3-4
+
+aluminium: 
+1. color: 1-2
+2. reflect: 10-12
+3. ambient: 0-1
