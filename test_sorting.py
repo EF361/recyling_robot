@@ -8,12 +8,12 @@ from pybricks.tools import wait
 # ⚙️ SETTINGS
 # =============================================================================
 ARM_SPEED = 200
-ARM_SAFE_POS = -202    # UP / SAFE
+ARM_SAFE_POS = -250    # UP / SAFE
 ARM_DOWN_POS = 0       # DOWN / FLOOR
 
 # CLAMP SETTINGS
 CLAMP_SPEED = 200
-CLAMP_FORCE = 60       # Force 60
+CLAMP_FORCE = 70       # Force 70
 CLAMP_OPEN_ANGLE = -75 # Angle -75
 
 # =============================================================================
