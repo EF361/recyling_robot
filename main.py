@@ -19,10 +19,10 @@ CORNER_COOLDOWN = 200
 
 # Arm/Clamp
 ARM_SPEED = 200
-ARM_SAFE_POS = -250
+ARM_SAFE_POS = -260
 ARM_DOWN_POS = 0
 CLAMP_SPEED = 200
-CLAMP_FORCE = 75
+CLAMP_FORCE = 72
 CLAMP_OPEN_ANGLE = -70
 
 # =============================================================================
@@ -152,6 +152,7 @@ try:
     blind_distance_mm = 1500 
     
     station_confirm_count = 0
+    required_corners = 3
 
     while True:
         if Button.CENTER in ev3.buttons.pressed(): break
@@ -187,7 +188,7 @@ try:
             continue
             
         # --- 4. STATION HUNTING ---
-        can_hunt = (next_station == 1 and corners_passed >= 3) or (next_station > 1)
+        can_hunt = (next_station == 1 and corners_passed >= required_corners) or (next_station > 1)
         
         is_matching_station = check_station(next_station, col, ref)
         
@@ -196,7 +197,7 @@ try:
         else:
             station_confirm_count = 0
             
-        required_confirms = 4 if next_station == 1 else 1
+        required_confirms = 3 if next_station == 1 else 1
         
         if station_confirm_count >= required_confirms:
             robot.stop()
@@ -212,6 +213,7 @@ try:
                 next_station = 1
                 blind_distance_mm = 1500 
                 corners_passed = 0
+                required_corners = 4
             
             station_confirm_count = 0  
             robot.reset()
