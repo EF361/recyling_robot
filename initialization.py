@@ -8,7 +8,7 @@ from pybricks.tools import wait
 # SETTINGS
 # =============================================================================
 ARM_SPEED = 200
-ARM_SAFE_POS = -202    # UP / SAFE
+ARM_SAFE_POS = -270    # UP / SAFE
 ARM_DOWN_POS = 5
 
 CLAMP_SPEED = 200

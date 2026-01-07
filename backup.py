@@ -43,7 +43,7 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
 # =============================================================================
 TRASH_DB = [
     ("None",    0, 5,   [None, Color.BLACK]),
-    ("Plastic", 6, 20,  [Color.BLACK, Color.BROWN]),
+    ("Plastic", 6, 100, [Color.BLACK, Color.BROWN, Color.YELLOW, Color.BLUE]),
     ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
 ]
 
