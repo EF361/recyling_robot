@@ -24,7 +24,7 @@ TURN_GAIN = -1.5
 WHITE_THRESHOLD = 75 
 VALID_WHITE_DIST = 50   
 CORNER_COOLDOWN = 200   
-CONFIRM_THRESHOLD = 5 
+CONFIRM_THRESHOLD = 5
 SLOW_PACE = 30  
 ARM_SPEED = 200
 ARM_SAFE_POS = -260
@@ -40,22 +40,17 @@ TRASH_DB = [
     ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
 ]
 
-# Station Order Definition
-STATION_ORDER = ["Plastic Station", "Paper Station", "Other Station"]
-
 ITEM_TO_STATION = {
     "Plastic": "Plastic Station",
     "Paper": "Paper Station",
     "None": "Other Station"
 }
 
-def update_screen(item, holding, target):
-    ev3.screen.clear()
-    ev3.screen.draw_text(0, 30, "Holding: " + str(holding))
-    ev3.screen.draw_text(0, 55, "Item: " + item)
-    ev3.screen.draw_text(0, 80, "Next: " + target)
-
 def initialize():
+    try:
+        ev3.screen.load_image('logo.png')
+    except:
+        ev3.screen.print("No Logo Found")
     ev3.light.on(Color.ORANGE)
     ev3.speaker.say("System Start")
     arm_lift.reset_angle(0)
@@ -105,30 +100,33 @@ def pick_up():
 
 def unload_sequence():
     robot.stop()
+    # Turn right 90 degrees
     robot.turn(90)
+    # Go forward until ultrasonic < 30mm (3cm)
     while obstacle_sensor.distance() > 30:
         robot.drive(SLOW_PACE, 0)
         wait(10)
     robot.stop()
-    ev3.speaker.play_notes(['C4/4', 'E4/4', 'G4/4'], tempo=120)
+    # Open clamp while lifting (simultaneous)
     arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS, wait=False)
     clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
+    # Go back slowly
     robot.straight(-100)
+    # Turn left to return to line
     robot.turn(-90)
 
 def check_station_logic(target_name, color, reflection):
-    if target_name == "Plastic Station": 
-        return color == Color.BLUE and 18 <= reflection <= 30
-    elif target_name == "Paper Station": 
-        return color == Color.WHITE and 45 <= reflection <= 65
-    elif target_name == "Other Station": 
-        return color == Color.RED and reflection >= 80
+    if target_name == "Plastic Station": # Dark Blue
+        return color == Color.BLUE and 18 <= reflection <= 25
+    elif target_name == "Paper Station": # Light Green
+        return color == Color.WHITE and 48 <= reflection <= 60
+    elif target_name == "Other Station": # Orange
+        return color == Color.RED and reflection >= 95
     return False
 
 # Mission State
 current_item = "None"
 holding_object = False
-station_index = 0
 corners_passed = 0
 white_start_dist = -1
 last_corner_finish_dist = -200
@@ -136,37 +134,17 @@ confirm_count = 0
 
 try:
     initialize()
-    print("-" * 60)
-    print("{:<12} | {:<10} | {:<15} | {:<5}".format("COL", "REF", "TARGET_STATION", "CONF"))
-    print("-" * 60)
     
     while True:
-        # Determine target station
-        if holding_object:
-            target_station = ITEM_TO_STATION.get(current_item, "Other Station")
-        else:
-            target_station = STATION_ORDER[station_index % len(STATION_ORDER)]
-
         ref = line_sensor.reflection()
         col = line_sensor.color()
         obj_dist = obstacle_sensor.distance()
         curr_dist = robot.distance()
-
-        update_screen(current_item, holding_object, target_station)
-
-        # --- TERMINAL LOGGING ---
-        print("{:<12} | {:<10} | {:<15} | {:<5}".format(
-            str(col), ref, target_station, confirm_count
-        ))
         
         # --- 1. TRASH DETECTION ---
         if not holding_object and obj_dist < 50:
             current_item = pick_up()
-            if current_item != "None":
-                holding_object = True
-            else:
-                clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
-                clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
+            holding_object = True
             continue 
 
         # --- 2. NAVIGATION ---
@@ -176,33 +154,29 @@ try:
             turn_rate = (ref - THRESHOLD) * TURN_GAIN
             robot.drive(DRIVE_SPEED, turn_rate)
 
-        # --- 3. STATION ARRIVAL ---
-        if check_station_logic(target_station, col, ref):
-            confirm_count += 1
-            if confirm_count >= CONFIRM_THRESHOLD:
-                robot.stop()
-                print("\n[!] ARRIVED AT: " + target_station)
-                wait(1000)
-                ev3.speaker.say(target_station)
-                
-                if holding_object:
-                    unload_sequence()
-                    holding_object = False
-                    current_item = "None"
-                    # After unloading, robot continues looking for next sequence station
-                else:
-                    # If empty, just pass through and increment loop index
-                    robot.drive(DRIVE_SPEED, 0)
-                    wait(1500) 
-                    station_index += 1
-                
-                confirm_count = 0
+        # --- 3. STATION DETECTION ---
+        # Logic for Plastic (Blue), Paper (Green), Other (Orange)
+        stations = ["Plastic Station", "Paper Station", "Other Station"]
+        for station in stations:
+            if check_station_logic(station, col, ref):
+                confirm_count += 1
+                if confirm_count >= CONFIRM_THRESHOLD:
+                    robot.stop()
+                    ev3.speaker.say(station)
+                    
+                    target_for_item = ITEM_TO_STATION.get(current_item, "Other Station")
+                    
+                    if holding_object and station == target_for_item:
+                        unload_sequence()
+                        holding_object = False
+                        current_item = "None"
+                    else:
+                        # Just passing by: move 80mm forward to clear station marker
+                        robot.straight(80)
+                    
+                    confirm_count = 0
+                    break
         else:
-            # If we see a station that is NOT our current target, just pass it
-            for s in STATION_ORDER:
-                if s != target_station and check_station_logic(s, col, ref):
-                    robot.drive(DRIVE_SPEED, 0)
-                    wait(1000)
             confirm_count = 0
         
         # --- 4. CORNER COUNTING ---

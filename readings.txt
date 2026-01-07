@@ -25,7 +25,7 @@
 276.0           | Color.BLUE   | 19           | 2           
 288.0           | Color.BLUE   | 19           | 3     
 
-
+== BLANK == 
 301.0           | Color.WHITE  | 79           | 4           
 314.0           | Color.WHITE  | 87           | 4           
 327.0           | Color.WHITE  | 94           | 5           
@@ -52,7 +52,7 @@
 564.0           | Color.WHITE  | 50           | 3           
 576.0           | Color.WHITE  | 61           | 4     
 
-
+== BLANK == 
 589.0           | Color.WHITE  | 90           | 4           
 601.0           | Color.WHITE  | 87           | 5           
 612.0           | Color.WHITE  | 87           | 5           
@@ -80,6 +80,8 @@
 866.0           | Color.RED    | 100          | 2           
 878.0           | Color.RED    | 100          | 3           
 891.0           | Color.RED    | 100          | 3           
+
+== BLANK ==
 903.0           | Color.WHITE  | 92           | 4           
 916.0           | Color.WHITE  | 95           | 4           
 929.0           | Color.WHITE  | 96           | 5         
