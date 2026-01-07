@@ -1,126 +1,85 @@
-light blue station: 
-Color Code | Refl | Amb
-Color.WHITE  | 64   | 1   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 65   | 4   
-Color.WHITE  | 65   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 65   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 65   | 5   
-Color.WHITE  | 64   | 4   
-Color.BLUE   | 15   | 4   
-Color.BLUE   | 12   | 4   
-Color.WHITE  | 58   | 4   
-Color.WHITE  | 58   | 4   
-Color.WHITE  | 58   | 5   
-Color.WHITE  | 58   | 4   
-Color.WHITE  | 58   | 4   
-Color.WHITE  | 56   | 5   
-Color.BLUE   | 24   | 4   
-Color.WHITE  | 57   | 4   
-Color.WHITE  | 60   | 4   
-Color.WHITE  | 60   | 4   
-Color.WHITE  | 51   | 4   
-Color.BLUE   | 11   | 3   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 67   | 4   
-Color.WHITE  | 67   | 4   
-Color.WHITE  | 68   | 4   
-Color.WHITE  | 31   | 4   
-Color.BLUE   | 23   | 4   
-Color.WHITE  | 60   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 38   | 4   
-Color.BLUE   | 38   | 4   
-Color.WHITE  | 60   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 63   | 4   
-Color.BLUE   | 23   | 4   
-Color.BLUE   | 48   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 65   | 4   
-Color.WHITE  | 64   | 4   
-Color.BLUE   | 13   | 3   
-Color.BLUE   | 7    | 3   
-Color.WHITE  | 60   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 57   | 4   
-Color.BLUE   | 14   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 65   | 4   
-Color.WHITE  | 66   | 4   
-Color.WHITE  | 66   | 4   
-Color.WHITE  | 66   | 4   
-Color.WHITE  | 66   | 4   
-Color.WHITE  | 66   | 4   
-Color.WHITE  | 65   | 4   
-Color.BLUE   | 25   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 64   | 4   
-Color.WHITE  | 63   | 4   
-Color.WHITE  | 62   | 4   
-Color.BLUE   | 15   | 4   
-Color.BLUE   | 16   | 4   
-Color.BLUE   | 10   | 4   
-Color.BLUE   | 6    | 4   
-Color.WHITE  | 60   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 61   | 5   
-Color.WHITE  | 62   | 5   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 61   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
-Color.WHITE  | 62   | 4   
---- STOPPED ---
+0.0             | Color.WHITE  | 82           | 4           
+11.0            | Color.WHITE  | 82           | 5           
+23.0            | Color.WHITE  | 87           | 4           
+36.0            | Color.WHITE  | 87           | 5           
+49.0            | Color.WHITE  | 88           | 4           
+61.0            | Color.WHITE  | 84           | 4           
+74.0            | Color.WHITE  | 82           | 4           
 
-orange station: 
-Color Code | Refl | Amb
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 83   | 3   
-Color.RED    | 44   | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 4   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
-Color.RED    | 100  | 3   
---- STOPPED ---
+== DARK BLUE STATION == 
+87.0            | Color.BLUE   | 20           | 2           
+99.0            | Color.BLUE   | 20           | 3           
+111.0           | Color.BLUE   | 20           | 2           
+125.0           | Color.BLUE   | 22           | 2           
+138.0           | Color.BLUE   | 23           | 2           
+151.0           | Color.BLUE   | 22           | 3           
+163.0           | Color.BLUE   | 22           | 2           
+176.0           | Color.BLUE   | 20           | 2           
+189.0           | Color.BLUE   | 20           | 2           
+201.0           | Color.BLUE   | 21           | 2           
+214.0           | Color.BLUE   | 20           | 2           
+227.0           | Color.BLUE   | 21           | 3           
+238.0           | Color.BLUE   | 20           | 2           
+251.0           | Color.BLUE   | 19           | 2           
+263.0           | Color.BLUE   | 19           | 2           
+276.0           | Color.BLUE   | 19           | 2           
+288.0           | Color.BLUE   | 19           | 3     
 
+
+301.0           | Color.WHITE  | 79           | 4           
+314.0           | Color.WHITE  | 87           | 4           
+327.0           | Color.WHITE  | 94           | 5           
+339.0           | Color.WHITE  | 96           | 4           
+352.0           | Color.WHITE  | 85           | 4           
+364.0           | Color.WHITE  | 63           | 4       
+
+== LIGHT GREEN STATION == 
+377.0           | Color.WHITE  | 50           | 3           
+389.0           | Color.WHITE  | 52           | 3           
+401.0           | Color.WHITE  | 51           | 3           
+413.0           | Color.WHITE  | 53           | 3           
+426.0           | Color.WHITE  | 51           | 3           
+438.0           | Color.WHITE  | 50           | 3           
+450.0           | Color.WHITE  | 50           | 3           
+463.0           | Color.WHITE  | 51           | 3           
+476.0           | Color.WHITE  | 50           | 3           
+488.0           | Color.WHITE  | 50           | 3           
+500.0           | Color.WHITE  | 51           | 3           
+513.0           | Color.WHITE  | 52           | 3           
+525.0           | Color.WHITE  | 54           | 2           
+538.0           | Color.WHITE  | 53           | 3           
+550.0           | Color.WHITE  | 51           | 2           
+564.0           | Color.WHITE  | 50           | 3           
+576.0           | Color.WHITE  | 61           | 4     
+
+
+589.0           | Color.WHITE  | 90           | 4           
+601.0           | Color.WHITE  | 87           | 5           
+612.0           | Color.WHITE  | 87           | 5           
+625.0           | Color.WHITE  | 81           | 4           
+637.0           | Color.WHITE  | 81           | 4           
+650.0           | Color.WHITE  | 81           | 4           
+663.0           | Color.WHITE  | 82           | 4           
+675.0           | Color.WHITE  | 82           | 4           
+688.0           | Color.WHITE  | 99           | 3       
+
+== ORANGE STATION == 
+700.0           | Color.RED    | 100          | 3           
+713.0           | Color.RED    | 100          | 3           
+726.0           | Color.RED    | 100          | 3           
+739.0           | Color.RED    | 100          | 3           
+752.0           | Color.RED    | 100          | 3           
+765.0           | Color.RED    | 100          | 3           
+777.0           | Color.RED    | 100          | 3           
+790.0           | Color.RED    | 100          | 3           
+803.0           | Color.RED    | 100          | 3           
+815.0           | Color.RED    | 100          | 3           
+828.0           | Color.RED    | 100          | 3           
+840.0           | Color.RED    | 100          | 3           
+853.0           | Color.RED    | 100          | 3           
+866.0           | Color.RED    | 100          | 2           
+878.0           | Color.RED    | 100          | 3           
+891.0           | Color.RED    | 100          | 3           
+903.0           | Color.WHITE  | 92           | 4           
+916.0           | Color.WHITE  | 95           | 4           
+929.0           | Color.WHITE  | 96           | 5         
