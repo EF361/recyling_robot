@@ -12,8 +12,9 @@ ev3 = EV3Brick()
 # and draws it at the specified coordinates (x, y).
 # Coordinates (0, 0) is the top-left corner of the screen.
 
+ev3.screen.draw_image(0, 0, 'logo2.png')
 # Optional: Add text over the image
-ev3.screen.draw_text(15, 0, "Recyling Robot", text_color=Color.BLACK)
+#ev3.screen.draw_text(15, 0, "Recyling Robot", text_color=Color.BLACK)
 
 # Keep the program running to display the image until interrupted
 wait(10000) # Displays the image for 5 seconds (5000 milliseconds)
