@@ -1,17 +1,19 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.hubs import EV3Brick
-from pybricks.ev3devices import Motor, ColorSensor
+from pybricks.ev3devices import Motor, ColorSensor, UltrasonicSensor
 from pybricks.parameters import Port, Color, Button, Stop
 from pybricks.tools import wait, StopWatch
 from pybricks.robotics import DriveBase
 
-# Setup
+# Setup - Ports updated based on user hardware
 ev3 = EV3Brick()
 left_motor = Motor(Port.D)
 right_motor = Motor(Port.C)
 arm_lift = Motor(Port.B)
 clamp = Motor(Port.A)
-line_sensor = ColorSensor(Port.S3)
+obstacle_sensor = UltrasonicSensor(Port.S1)  # Port 1
+clamp_sensor = ColorSensor(Port.S2)         # Port 2
+line_sensor = ColorSensor(Port.S3)          # Port 3
 robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
 mission_timer = StopWatch()
 
@@ -19,18 +21,24 @@ mission_timer = StopWatch()
 THRESHOLD = 44       
 DRIVE_SPEED = 50    
 TURN_GAIN = -1.2    
+WHITE_THRESHOLD = 75 
+VALID_WHITE_DIST = 50   
+CORNER_COOLDOWN = 200   
+CONFIRM_THRESHOLD = 5
+SLOW_PACE = 30  
 ARM_SPEED = 200
 ARM_SAFE_POS = -260
 ARM_DOWN_POS = 0
 CLAMP_SPEED = 200
 CLAMP_FORCE = 72
-SLOW_PACE = 30 
+CLAMP_OPEN_ANGLE = -70
 
-# Corner Logic
-WHITE_THRESHOLD = 75 
-VALID_WHITE_DIST = 50   
-CORNER_COOLDOWN = 200   
-CONFIRM_THRESHOLD = 5
+# Trash Database
+TRASH_DB = [
+    ("None",    0, 5,   [None, Color.BLACK]),
+    ("Plastic", 6, 100, [Color.BLACK, Color.BROWN, Color.YELLOW, Color.BLUE]),
+    ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
+]
 
 def initialize():
     try:
@@ -62,46 +70,89 @@ def shutdown():
     right_motor.stop()
     ev3.speaker.beep()
 
-def get_station_name(color, reflection):
-    if color == Color.BLUE and 18 <= reflection <= 25:
-        return "Dark Blue Station"
-    if color == Color.WHITE and 48 <= reflection <= 60:
-        return "Light Green Station"
-    if color == Color.RED and reflection >= 95:
-        return "Orange Station"
-    return None
+def identify_trash():
+    final_decision = "None"
+    for i in range(5):
+        col, ref = clamp_sensor.color(), clamp_sensor.reflection()
+        for name, mi, ma, colors in TRASH_DB:
+            if mi <= ref <= ma and col in colors:
+                final_decision = name
+        wait(200)
+    return final_decision
 
-# State variables
+def pick_and_drop():
+    robot.stop() 
+    wait(100) 
+    ev3.speaker.say("Object")
+    robot.drive(30, 0)
+    wait(1000) 
+    robot.stop()
+    clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
+    arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
+    arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS)
+    item = identify_trash()
+    ev3.speaker.say(item)
+    if item != "None":
+        wait(5000)
+        clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
+        wait(1000)
+        clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
+    else:
+        clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
+
+def check_station_logic(target_name, color, reflection):
+    if target_name == "Dark Blue Station":
+        return color == Color.BLUE and 18 <= reflection <= 25
+    elif target_name == "Light Green Station":
+        return color == Color.WHITE and 48 <= reflection <= 60
+    elif target_name == "Orange Station":
+        return color == Color.RED and reflection >= 95
+    return False
+
+# Mission State
+STATION_SEQUENCE = ["Plastic Station", "Paper Station", "Other Station"]
+current_target_idx = 0
 corners_passed = 0
 white_start_dist = -1
 last_corner_finish_dist = -200
-next_station = 1
 confirm_count = 0
-found_stations = []
 
 try:
     initialize()
-    print("{:<10} | {:<10} | {:<10} | {:<10} | {:<15}".format("Dist", "Color", "Ref", "Amb", "Status"))
-    print("-" * 65)
+    print("{:<10} | {:<10} | {:<10} | {:<10} | {:<15}".format("Dist", "Color", "Ref", "Obj", "Status"))
+    print("-" * 75)
     
     while True:
+        target_station = STATION_SEQUENCE[current_target_idx % len(STATION_SEQUENCE)]
         ref = line_sensor.reflection()
         col = line_sensor.color()
-        amb = line_sensor.ambient()
+        obj_dist = obstacle_sensor.distance()
         curr_dist = robot.distance()
-        detected = get_station_name(col, ref)
         
-        # Navigation
+        # --- 1. TRASH DETECTION ---
+        if obj_dist < 50:
+            pick_and_drop()
+            robot.reset() 
+            last_corner_finish_dist = -200
+            continue 
+
+        # --- 2. NAVIGATION ---
         if col == Color.RED:
             robot.drive(DRIVE_SPEED, 0)
             status_text = "RED-STRAIGHT"
+        elif ref > THRESHOLD + 20: 
+            robot.stop() 
+            left_motor.run(-20)  
+            right_motor.run(80)  
+            status_text = "REV-LEFT"
         else:
             turn_rate = (ref - THRESHOLD) * TURN_GAIN
             robot.drive(DRIVE_SPEED, turn_rate)
-            status_text = "Following"
+            status_text = "FOLLOWING"
 
-        # Corner Counting
-        if mission_timer.time() > 5000 and next_station == 1:
+        # --- 3. CORNER COUNTING ---
+        if mission_timer.time() > 5000:
             if (curr_dist - last_corner_finish_dist > CORNER_COOLDOWN):
                 if ref > WHITE_THRESHOLD:
                     if white_start_dist == -1: white_start_dist = curr_dist 
@@ -110,30 +161,31 @@ try:
                         ev3.speaker.beep()
                         last_corner_finish_dist = curr_dist
                         white_start_dist = -1 
-                        print("\n[#] CORNER {} CONFIRMED\n".format(corners_passed))
+                        print("\n[#] CORNER {} DETECTED\n".format(corners_passed))
                 else:
                     white_start_dist = -1 
 
-        # Station Detection
-        if detected and (detected not in found_stations):
+        # --- 4. STATION DETECTION ---
+        if check_station_logic(target_station, col, ref):
             confirm_count += 1
-            status_text = "Confirming"
             if confirm_count >= CONFIRM_THRESHOLD:
                 robot.stop()
-                ev3.speaker.say(detected)
+                ev3.speaker.say(target_station)
                 robot.settings(straight_speed=SLOW_PACE)
                 robot.straight(80)
-                print("\n[!] STATION: {} confirmed. Moving 80mm. Stop 2s.\n".format(detected))
-                found_stations.append(detected)
                 wait(2000)
+                current_target_idx += 1
                 confirm_count = 0
         else:
             confirm_count = 0
-            if not detected: found_stations = []
 
-        print("{:<10.1f} | {:<10} | {:<10} | {:<10} | {:<15}".format(curr_dist, str(col), ref, amb, status_text))
-        wait(10)
+        # --- 5. PRINT READINGS ---
+        print("{:<10.1f} | {:<10} | {:<10} | {:<10} | {:<15}".format(
+            curr_dist, str(col), ref, obj_dist, status_text
+        ))
+
         if Button.CENTER in ev3.buttons.pressed(): break
+        wait(10)
 
 finally:
     shutdown()
