@@ -25,10 +25,6 @@ CLAMP_SPEED = 200
 CLAMP_FORCE = 70
 CLAMP_OPEN_ANGLE = -70
 
-# Station Calibration
-MIN_GREEN_REFL = 50
-MAX_GREEN_REFL = 65
-
 # =============================================================================
 # 🔌 2. SETUP
 # =============================================================================
@@ -56,6 +52,12 @@ TRASH_DB = [
 # =============================================================================
 
 def initialize():
+    # ⚠️ Display Logo on Start
+    try:
+        ev3.screen.load_image('logo.png')
+    except:
+        ev3.screen.print("No Logo Found")
+
     ev3.light.on(Color.ORANGE)
     ev3.speaker.say("System Start")
     arm_lift.reset_angle(0)
@@ -76,6 +78,10 @@ def shutdown():
     ev3.speaker.say("Shutdown")
     clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    
+    # ⚠️ Clear screen on shutdown
+    ev3.screen.clear()
+    
     left_motor.stop()
     right_motor.stop()
     ev3.speaker.beep()
@@ -91,17 +97,15 @@ def identify_trash():
     return final_decision
 
 def pick_and_drop():
-    # ⚠️ FIX: Use simple time-based drive instead of settings/straight to avoid EPERM
     robot.stop() 
     wait(100) 
     ev3.speaker.say("Object")
     
-    # Move forward 30mm/s for 1000ms (~30mm distance)
+    # Time-based approach (approx 30mm)
     robot.drive(30, 0)
     wait(1000) 
     robot.stop()
     
-    # Proceed with Pickup
     clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
     clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
@@ -120,11 +124,19 @@ def pick_and_drop():
 
 def check_station(target_id, color, reflection):
     if target_id == 1: 
-        return color == Color.WHITE and MIN_GREEN_REFL <= reflection <= MAX_GREEN_REFL
+        # Light Blue Station Logic (White 40-60% OR Blue 12-50%)
+        is_dim_white = (color == Color.WHITE and 40 <= reflection <= 60)
+        is_blue_part = (color == Color.BLUE and 12 <= reflection <= 50)
+        return is_dim_white or is_blue_part
+
     elif target_id == 2: 
+        # Yellow Station
         return color in [Color.YELLOW, Color.BROWN] or (color == Color.BLUE and reflection > 90)
+
     elif target_id == 3: 
+        # Orange Station
         return color == Color.RED
+        
     return False
 
 # =============================================================================
@@ -153,7 +165,6 @@ try:
         # --- 1. TRASH DETECTION ---
         if obj_dist < 50:
             pick_and_drop()
-            # Reset cooldowns and distance after interaction to ensure safety
             robot.reset() 
             last_corner_finish_dist = -200
 
@@ -206,6 +217,7 @@ try:
             station_confirm_count = 0  
             robot.reset()
             last_corner_finish_dist = -200
+            robot.straight(60)
         else:
             robot.drive(DRIVE_SPEED, turn_rate)
         

@@ -11,25 +11,9 @@ brainstorming:
 https://gemini.google.com/app/8ed14680446f7b79
 
 trash type: 
-1 = Green (Plastic)
+1 = Light Blue (Plastic)
 2 = Yellow (Paper)
 3 = Red/Orange (Others)
-
-
-color green: 
-1. color: 2
-2. ambient: 2
-3. reflect:  20-24
-
-color yellow: 
-1. color: 2
-2. ambient: 2 
-3. reflect: 100
-
-color orange: 
-1. color: 5 
-2. ambient: 2
-3. reflect: 100
 
 paper: 
 1. color: 6
