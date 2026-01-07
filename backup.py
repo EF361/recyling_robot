@@ -2,130 +2,214 @@
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, ColorSensor, UltrasonicSensor
 from pybricks.parameters import Port, Button, Color, Stop
-from pybricks.tools import wait
+from pybricks.tools import wait, StopWatch
 from pybricks.robotics import DriveBase
 
 # =============================================================================
-# ⚙️ SETTINGS
-
-# BACKUP FOR INITIALIZATION AND SHUTTING DOWN THE ROBOT WITH LINE FOLLOWER ONLY
+# ⚙️ 1. GLOBAL SETTINGS
 # =============================================================================
+THRESHOLD = 44       
+DRIVE_SPEED = 50    
+TURN_GAIN = -1.2     
 
-# 1. Line Following
-BLACK_VAL = 7
-WHITE_VAL = 80
-THRESHOLD = (BLACK_VAL + WHITE_VAL) / 2
-DRIVE_SPEED = 50     
-TURN_GAIN = -1.2     # Negative = Follow Right Edge
+# Corner Logic
+WHITE_THRESHOLD = 75 
+VALID_WHITE_DIST = 50   
+CORNER_COOLDOWN = 200   
 
-# 2. Arm Settings
+# Arm/Clamp
 ARM_SPEED = 200
-ARM_UP_POS = 0       
-ARM_DOWN_POS = 5     
-ARM_SAFE_POS = -202  
-
-# 3. Clamp Settings
+ARM_SAFE_POS = -250
+ARM_DOWN_POS = 0
 CLAMP_SPEED = 200
-# Limit force to 40% to prevent "Break" sound when hitting wall
-CLAMP_FORCE = 40     
+CLAMP_FORCE = 70
+CLAMP_OPEN_ANGLE = -70
+
+# Station Calibration
+MIN_GREEN_REFL = 50
+MAX_GREEN_REFL = 65
 
 # =============================================================================
-# 🔌 SETUP
+# 🔌 2. SETUP
 # =============================================================================
 ev3 = EV3Brick()
-ev3.speaker.set_volume(100)
-ev3.speaker.set_speech_options(speed=80, pitch=60)
-
 left_motor = Motor(Port.D)
 right_motor = Motor(Port.C)
 arm_lift = Motor(Port.B)
 clamp = Motor(Port.A)
-
-obstacle_sensor = UltrasonicSensor(Port.S1)
-clamp_sensor = ColorSensor(Port.S2)
-line_sensor = ColorSensor(Port.S3)
-
+line_sensor = ColorSensor(Port.S3)   
+clamp_sensor = ColorSensor(Port.S2)  
+obstacle_sensor = UltrasonicSensor(Port.S1) 
 robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
 
 # =============================================================================
-# 🛠️ SYSTEM FUNCTIONS
+# 📊 3. TRASH DATABASE
+# =============================================================================
+TRASH_DB = [
+    ("None",    0, 5,   [None, Color.BLACK]),
+    ("Plastic", 6, 20,  [Color.BLACK, Color.BROWN]),
+    ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
+]
+
+# =============================================================================
+# 🛠️ 4. CORE FUNCTIONS
 # =============================================================================
 
 def initialize():
-    """Runs ONCE at the start."""
     ev3.light.on(Color.ORANGE)
     ev3.speaker.say("System Start")
-    
-    # --- 1. ARM INIT ---
     arm_lift.reset_angle(0)
-    print("Init: Moving Arm to Safe Height...")
-    arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS)
-    
-    # --- 2. CLAMP CALIBRATION (The Fix) ---
-    print("Init: Calibrating Clamp...")
-    ev3.speaker.say("Calibrating Clamp")
-
-    # Step A: Open gently until it hits the limit
-    # Positive speed = Open. duty_limit=40 prevents loud clicking.
-    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.COAST, duty_limit=CLAMP_FORCE)
-    
-    # Step B: Close gently until it hits the limit
-    # Negative speed = Close.
-    clamp.run_until_stalled(-CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
-    
-    # Step C: Reset Angle so the robot knows "Here is Closed (0)"
+    arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS, then=Stop.BRAKE)
+    clamp.run_until_stalled(-CLAMP_SPEED, duty_limit=40)
+    clamp.run_until_stalled(CLAMP_SPEED, duty_limit=40)
     clamp.reset_angle(0)
-    
-    # (Optional) Open slightly to be ready? Or stay closed?
-    # Staying closed is safer for driving.
-    
+    clamp.run_target(CLAMP_SPEED, -5, then=Stop.COAST)
+    robot.reset()
     ev3.light.on(Color.GREEN)
-    ev3.speaker.say("Line Follower Ready")
-    wait(1000)
+    ev3.speaker.say("Ready")
+    while Button.CENTER not in ev3.buttons.pressed(): wait(20)
+    while Button.CENTER in ev3.buttons.pressed(): wait(20)
 
 def shutdown():
-    """Runs AUTOMATICALLY when Center Button is pressed."""
     ev3.light.on(Color.RED)
     robot.stop()
-    ev3.speaker.say("Shutting down")
-    
-    # 1. Lower Arm safely
-    print("Shutdown: Lowering Arm...")
+    ev3.speaker.say("Shutdown")
+    clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
-    
-    # 2. Close Clamp Gently
-    print("Shutdown: Closing Clamp...")
-    # Using run_until_stalled ensures it closes tight but stops before "clicking"
-    clamp.run_until_stalled(-CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
-    
-    # 3. Release motors
     left_motor.stop()
     right_motor.stop()
-    arm_lift.stop()
-    clamp.stop()
-    
     ev3.speaker.beep()
 
-# =============================================================================
-# 🚀 MAIN LOOP
-# =============================================================================
+def identify_trash():
+    final_decision = "None"
+    for i in range(5):
+        col, ref = clamp_sensor.color(), clamp_sensor.reflection()
+        for name, mi, ma, colors in TRASH_DB:
+            if mi <= ref <= ma and col in colors:
+                final_decision = name
+        wait(200)
+    return final_decision
 
-initialize() 
+def pick_and_drop():
+    # ⚠️ FIX: Use simple time-based drive instead of settings/straight to avoid EPERM
+    robot.stop() 
+    wait(100) 
+    ev3.speaker.say("Object")
+    
+    # Move forward 30mm/s for 1000ms (~30mm distance)
+    robot.drive(30, 0)
+    wait(1000) 
+    robot.stop()
+    
+    # Proceed with Pickup
+    clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
+    arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
+    arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS)
+    
+    item = identify_trash()
+    ev3.speaker.say(item)
+    
+    if item != "None":
+        wait(5000)
+        clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
+        wait(1000)
+        clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
+    else:
+        clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
 
+def check_station(target_id, color, reflection):
+    if target_id == 1: 
+        return color == Color.WHITE and MIN_GREEN_REFL <= reflection <= MAX_GREEN_REFL
+    elif target_id == 2: 
+        return color in [Color.YELLOW, Color.BROWN] or (color == Color.BLUE and reflection > 90)
+    elif target_id == 3: 
+        return color == Color.RED
+    return False
+
+# =============================================================================
+# 🚀 5. MAIN MISSION LOOP
+# =============================================================================
 try:
+    initialize()
+    mission_timer = StopWatch()
+    
+    next_station = 1
+    corners_passed = 0
+    white_start_dist = -1
+    last_corner_finish_dist = -200
+    blind_distance_mm = 1500 
+    
+    station_confirm_count = 0
+
     while True:
-        # 1. SAFETY EXIT
-        if Button.CENTER in ev3.buttons.pressed():
-            break 
+        if Button.CENTER in ev3.buttons.pressed(): break
+        
+        col, ref = line_sensor.color(), line_sensor.reflection()
+        obj_dist = obstacle_sensor.distance()
+        curr_dist = robot.distance()
+        turn_rate = (ref - THRESHOLD) * TURN_GAIN
+        
+        # --- 1. TRASH DETECTION ---
+        if obj_dist < 50:
+            pick_and_drop()
+            # Reset cooldowns and distance after interaction to ensure safety
+            robot.reset() 
+            last_corner_finish_dist = -200
+
+        # --- 2. CORNER COUNTING ---
+        if mission_timer.time() > 5000 and next_station == 1:
+            if (curr_dist - last_corner_finish_dist > CORNER_COOLDOWN):
+                if ref > WHITE_THRESHOLD:
+                    if white_start_dist == -1: white_start_dist = curr_dist 
+                    if (curr_dist - white_start_dist) >= VALID_WHITE_DIST:
+                        corners_passed += 1
+                        ev3.speaker.beep()
+                        print("Corner confirmed: " + str(corners_passed))
+                        last_corner_finish_dist = curr_dist
+                        white_start_dist = -1 
+                else:
+                    white_start_dist = -1 
+
+        # --- 3. NAVIGATION ---
+        if curr_dist < blind_distance_mm:
+            robot.drive(DRIVE_SPEED, turn_rate)
+            continue
             
-        # 2. LINE FOLLOWER (Only)
-        current_reflect = line_sensor.reflection()
+        # --- 4. STATION HUNTING ---
+        can_hunt = (next_station == 1 and corners_passed >= 3) or (next_station > 1)
         
-        # Calculate Turn (-1.2 Gain for Right Edge logic)
-        deviation = current_reflect - THRESHOLD
-        turn_rate = deviation * TURN_GAIN
+        is_matching_station = check_station(next_station, col, ref)
         
-        robot.drive(DRIVE_SPEED, turn_rate)
+        if can_hunt and is_matching_station:
+            station_confirm_count += 1
+        else:
+            station_confirm_count = 0
+            
+        required_confirms = 3 if next_station == 1 else 1
+        
+        if station_confirm_count >= required_confirms:
+            robot.stop()
+            ev3.speaker.say("Station")
+            
+            if next_station == 1: 
+                next_station = 2
+                blind_distance_mm = 200 
+            elif next_station == 2: 
+                next_station = 3
+                blind_distance_mm = 250 
+            elif next_station == 3: 
+                next_station = 1
+                blind_distance_mm = 1500 
+                corners_passed = 0
+            
+            station_confirm_count = 0  
+            robot.reset()
+            last_corner_finish_dist = -200
+        else:
+            robot.drive(DRIVE_SPEED, turn_rate)
+        
+        wait(10)
 
 finally:
     shutdown()
