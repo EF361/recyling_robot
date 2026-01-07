@@ -22,7 +22,7 @@ ARM_SPEED = 200
 ARM_SAFE_POS = -250
 ARM_DOWN_POS = 0
 CLAMP_SPEED = 200
-CLAMP_FORCE = 70
+CLAMP_FORCE = 75
 CLAMP_OPEN_ANGLE = -70
 
 # =============================================================================
@@ -124,10 +124,9 @@ def pick_and_drop():
 
 def check_station(target_id, color, reflection):
     if target_id == 1: 
-        # Light Blue Station Logic (White 40-60% OR Blue 12-50%)
-        is_dim_white = (color == Color.WHITE and 40 <= reflection <= 60)
-        is_blue_part = (color == Color.BLUE and 12 <= reflection <= 50)
-        return is_dim_white or is_blue_part
+        # Light Blue Station Logic (White 40-60% )
+        is_dim_white = (color == Color.WHITE and 40 <= reflection <= 55)
+        return is_dim_white
 
     elif target_id == 2: 
         # Yellow Station
@@ -197,7 +196,7 @@ try:
         else:
             station_confirm_count = 0
             
-        required_confirms = 3 if next_station == 1 else 1
+        required_confirms = 4 if next_station == 1 else 1
         
         if station_confirm_count >= required_confirms:
             robot.stop()
@@ -217,7 +216,6 @@ try:
             station_confirm_count = 0  
             robot.reset()
             last_corner_finish_dist = -200
-            robot.straight(60)
         else:
             robot.drive(DRIVE_SPEED, turn_rate)
         
