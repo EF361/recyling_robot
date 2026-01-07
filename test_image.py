@@ -12,7 +12,7 @@ ev3 = EV3Brick()
 # and draws it at the specified coordinates (x, y).
 # Coordinates (0, 0) is the top-left corner of the screen.
 
-ev3.screen.draw_image(0, 0, 'logo4.png')
+ev3.screen.draw_image(0, 0, 'logo.png')
 # Optional: Add text over the image
 #ev3.screen.draw_text(15, 0, "Recyling Robot", text_color=Color.BLACK)
 
