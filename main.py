@@ -197,11 +197,17 @@ try:
         else:
             station_confirm_count = 0
             
-        required_confirms = 3 if next_station == 1 else 1
+        required_confirms = 5 if next_station == 1 else 1
         
         if station_confirm_count >= required_confirms:
             robot.stop()
-            ev3.speaker.say("Station")
+
+            if next_station == 1:
+                ev3.speaker.say("Light Blue Station")
+            elif next_station == 2:
+                ev3.speaker.say("Yellow Station")
+            elif next_station == 3:
+                ev3.speaker.say("Orange Station")
             
             if next_station == 1: 
                 next_station = 2
@@ -218,6 +224,7 @@ try:
             station_confirm_count = 0  
             robot.reset()
             last_corner_finish_dist = -200
+            robot.straight(60)
         else:
             robot.drive(DRIVE_SPEED, turn_rate)
         
