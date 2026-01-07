@@ -13,8 +13,8 @@ ARM_DOWN_POS = 0       # DOWN / FLOOR
 
 # CLAMP SETTINGS
 CLAMP_SPEED = 200
-CLAMP_FORCE = 70       # Force 70
-CLAMP_OPEN_ANGLE = -75 # Angle -75
+CLAMP_FORCE = 68       # Force 70
+CLAMP_OPEN_ANGLE = -65 # Angle -75
 
 # =============================================================================
 # 📊 TRASH ID CONFIGURATION (THE LIST)
@@ -26,7 +26,7 @@ TRASH_DB = [
     ("None",    0, 5,   [None, Color.BLACK]),
     
     # 2. Water Bottle (Dark + Black/Brown)
-    ("Plastic", 6, 20,  [Color.BLACK, Color.BROWN]),
+    ("Plastic", 6, 25,  [Color.BLACK, Color.BROWN]),
     
     # 3. Paper (Bright + White/Blue)
     ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
