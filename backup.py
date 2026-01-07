@@ -19,15 +19,11 @@ CORNER_COOLDOWN = 200
 
 # Arm/Clamp
 ARM_SPEED = 200
-ARM_SAFE_POS = -250
+ARM_SAFE_POS = -260
 ARM_DOWN_POS = 0
 CLAMP_SPEED = 200
-CLAMP_FORCE = 70
+CLAMP_FORCE = 72
 CLAMP_OPEN_ANGLE = -70
-
-# Station Calibration
-MIN_GREEN_REFL = 50
-MAX_GREEN_REFL = 65
 
 # =============================================================================
 # 🔌 2. SETUP
@@ -56,6 +52,12 @@ TRASH_DB = [
 # =============================================================================
 
 def initialize():
+    # ⚠️ Display Logo on Start
+    try:
+        ev3.screen.load_image('logo.png')
+    except:
+        ev3.screen.print("No Logo Found")
+
     ev3.light.on(Color.ORANGE)
     ev3.speaker.say("System Start")
     arm_lift.reset_angle(0)
@@ -76,6 +78,10 @@ def shutdown():
     ev3.speaker.say("Shutdown")
     clamp.run_until_stalled(CLAMP_SPEED, duty_limit=CLAMP_FORCE)
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
+    
+    # ⚠️ Clear screen on shutdown
+    ev3.screen.clear()
+    
     left_motor.stop()
     right_motor.stop()
     ev3.speaker.beep()
@@ -91,17 +97,15 @@ def identify_trash():
     return final_decision
 
 def pick_and_drop():
-    # ⚠️ FIX: Use simple time-based drive instead of settings/straight to avoid EPERM
     robot.stop() 
     wait(100) 
     ev3.speaker.say("Object")
     
-    # Move forward 30mm/s for 1000ms (~30mm distance)
+    # Time-based approach (approx 30mm)
     robot.drive(30, 0)
     wait(1000) 
     robot.stop()
     
-    # Proceed with Pickup
     clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
     clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
@@ -120,11 +124,18 @@ def pick_and_drop():
 
 def check_station(target_id, color, reflection):
     if target_id == 1: 
-        return color == Color.WHITE and MIN_GREEN_REFL <= reflection <= MAX_GREEN_REFL
+        # Light Blue Station Logic (White 40-60% )
+        is_dim_white = (color == Color.WHITE and 40 <= reflection <= 55)
+        return is_dim_white
+
     elif target_id == 2: 
+        # Yellow Station
         return color in [Color.YELLOW, Color.BROWN] or (color == Color.BLUE and reflection > 90)
+
     elif target_id == 3: 
+        # Orange Station
         return color == Color.RED
+        
     return False
 
 # =============================================================================
@@ -141,6 +152,7 @@ try:
     blind_distance_mm = 1500 
     
     station_confirm_count = 0
+    required_corners = 3
 
     while True:
         if Button.CENTER in ev3.buttons.pressed(): break
@@ -153,7 +165,6 @@ try:
         # --- 1. TRASH DETECTION ---
         if obj_dist < 50:
             pick_and_drop()
-            # Reset cooldowns and distance after interaction to ensure safety
             robot.reset() 
             last_corner_finish_dist = -200
 
@@ -177,7 +188,7 @@ try:
             continue
             
         # --- 4. STATION HUNTING ---
-        can_hunt = (next_station == 1 and corners_passed >= 3) or (next_station > 1)
+        can_hunt = (next_station == 1 and corners_passed >= required_corners) or (next_station > 1)
         
         is_matching_station = check_station(next_station, col, ref)
         
@@ -202,6 +213,7 @@ try:
                 next_station = 1
                 blind_distance_mm = 1500 
                 corners_passed = 0
+                required_corners = 4
             
             station_confirm_count = 0  
             robot.reset()

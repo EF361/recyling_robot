@@ -8,13 +8,14 @@ from pybricks.tools import wait
 # ⚙️ SETTINGS
 # =============================================================================
 ARM_SPEED = 200
-ARM_SAFE_POS = -250    # UP / SAFE
+ARM_SAFE_POS = -260    # UP / SAFE
 ARM_DOWN_POS = 0       # DOWN / FLOOR
 
 # CLAMP SETTINGS
 CLAMP_SPEED = 200
-CLAMP_FORCE = 68       # Force 70
-CLAMP_OPEN_ANGLE = -65 # Angle -75
+CLAMP_FORCE = 80       # Increased force for clamping items
+SILENT_CLAMP_FORCE = 50 # Lower force for silent calibration and shutdown
+CLAMP_OPEN_ANGLE = -72 # Angle -75
 
 # =============================================================================
 # 📊 TRASH ID CONFIGURATION (THE LIST)
@@ -25,8 +26,8 @@ TRASH_DB = [
     # 1. Nothing / Empty (Low Ref + None/Black)
     ("None",    0, 5,   [None, Color.BLACK]),
     
-    # 2. Water Bottle (Dark + Black/Brown)
-    ("Plastic", 6, 25,  [Color.BLACK, Color.BROWN]),
+    # 2. Water Bottle (Dark + Black/Brown/Yellow) - Extended range to include higher reflections for yellow plastics
+    ("Plastic", 6, 100, [Color.BLACK, Color.BROWN, Color.YELLOW, Color.BLUE]),
     
     # 3. Paper (Bright + White/Blue)
     ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
@@ -58,9 +59,10 @@ def wait_with_check(duration_ms):
 def identify_trash_item():
     """
     Scans 5 times. Checks Reflection AND Color.
-    Returns the LAST valid match found.
+    Uses majority vote for final decision to increase accuracy.
+    Returns the material with the most matches, or "None" if no matches.
     """
-    final_decision = "None" # Default
+    match_counts = {"None": 0, "Plastic": 0, "Paper": 0}  # Initialize counts
     
     for i in range(5):
         # 1. Capture readings
@@ -86,16 +88,22 @@ def identify_trash_item():
             if min_ref <= ref <= max_ref:
                 # CHECK 2: Color Match
                 if col in valid_colors:
-                    final_decision = name
+                    match_counts[name] += 1
                     match_found = True
                     print(">> Match Found: " + name)
+                    break  # Stop checking other items for this sample
         
         if not match_found:
              print(">> No Match (Unknown Item)")
         
         wait(200)
     
-    print(">> FINAL DECISION: " + final_decision + "\n")
+    # 4. Determine final decision by majority vote
+    final_decision = max(match_counts, key=match_counts.get)
+    if match_counts[final_decision] == 0:
+        final_decision = "None"
+    
+    print(">> FINAL DECISION: " + final_decision + " (Matches: " + str(match_counts) + ")\n")
     return final_decision
 
 def pick_up_sequence():
@@ -106,7 +114,7 @@ def pick_up_sequence():
     ev3.speaker.say("Trash detected")
     clamp.run_target(CLAMP_SPEED, CLAMP_OPEN_ANGLE)
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
-    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
+    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)  # Use higher force for clamping
     arm_lift.run_target(ARM_SPEED, ARM_SAFE_POS)
     
     item_name = identify_trash_item()
@@ -140,8 +148,8 @@ def initialize():
 
     # 2️⃣ CLAMP (Quiet Mode)
     ev3.speaker.say("Calibrating Clamp")
-    clamp.run_until_stalled(-CLAMP_SPEED, then=Stop.COAST, duty_limit=40)
-    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=40)
+    clamp.run_until_stalled(-CLAMP_SPEED, then=Stop.COAST, duty_limit=SILENT_CLAMP_FORCE)  # Use silent force
+    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=SILENT_CLAMP_FORCE)  # Use silent force
     clamp.reset_angle(0)
     # Release tension slightly (5 degrees) to stop buzzing
     clamp.run_target(CLAMP_SPEED, -5, then=Stop.COAST)
@@ -163,7 +171,7 @@ def initialize():
 def shutdown():
     ev3.light.on(Color.RED)
     ev3.speaker.say("Shutdown")
-    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=CLAMP_FORCE)
+    clamp.run_until_stalled(CLAMP_SPEED, then=Stop.HOLD, duty_limit=SILENT_CLAMP_FORCE) 
     arm_lift.run_target(ARM_SPEED, ARM_DOWN_POS)
     wait(300)
     ev3.speaker.beep()
