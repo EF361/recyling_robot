@@ -7,23 +7,63 @@
 74.0            | Color.WHITE  | 82           | 4           
 
 == DARK BLUE STATION == 
-87.0            | Color.BLUE   | 20           | 2           
-99.0            | Color.BLUE   | 20           | 3           
-111.0           | Color.BLUE   | 20           | 2           
-125.0           | Color.BLUE   | 22           | 2           
-138.0           | Color.BLUE   | 23           | 2           
-151.0           | Color.BLUE   | 22           | 3           
-163.0           | Color.BLUE   | 22           | 2           
-176.0           | Color.BLUE   | 20           | 2           
-189.0           | Color.BLUE   | 20           | 2           
-201.0           | Color.BLUE   | 21           | 2           
-214.0           | Color.BLUE   | 20           | 2           
-227.0           | Color.BLUE   | 21           | 3           
-238.0           | Color.BLUE   | 20           | 2           
-251.0           | Color.BLUE   | 19           | 2           
-263.0           | Color.BLUE   | 19           | 2           
-276.0           | Color.BLUE   | 19           | 2           
-288.0           | Color.BLUE   | 19           | 3     
+Color Code | Refl | Amb
+Color.BLUE   | 6    | 0   
+Color.BLUE   | 5    | 0   
+Color.BLUE   | 5    | 0   
+Color.BLUE   | 7    | 0   
+Color.BLUE   | 21   | 2   
+Color.BLUE   | 18   | 2   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 20   | 1   
+Color.BLUE   | 10   | 2   
+Color.BLUE   | 25   | 2   
+Color.BLUE   | 3    | 1   
+Color.BLUE   | 3    | 0   
+Color.BLUE   | 3    | 0   
+Color.BLUE   | 2    | 1   
+Color.BLUE   | 2    | 1   
+Color.BLUE   | 9    | 0   
+Color.BLUE   | 22   | 2   
+Color.BLUE   | 6    | 2   
+Color.BLUE   | 10   | 2   
+Color.BLUE   | 9    | 1   
+Color.BLUE   | 8    | 0   
+Color.BLUE   | 7    | 1   
+Color.BLUE   | 10   | 1   
+Color.BLUE   | 12   | 2   
+Color.BLUE   | 0    | 1   
+Color.GREEN  | 2    | 0   
+Color.GREEN  | 1    | 0   
+Color.GREEN  | 1    | 0   
+Color.GREEN  | 1    | 0   
+Color.GREEN  | 0    | 0   
+Color.GREEN  | 1    | 0   
+Color.GREEN  | 0    | 0   
+Color.BLUE   | 12   | 2   
+Color.BLUE   | 11   | 2   
+Color.BLUE   | 6    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 2    | 0   
+Color.BLUE   | 24   | 2   
+Color.BLUE   | 20   | 1   
+Color.BLUE   | 4    | 1   
+Color.BLUE   | 5    | 0   
+Color.BLUE   | 4    | 1   
+Color.BLUE   | 4    | 0   
+Color.BLUE   | 3    | 1   
+Color.BLUE   | 4    | 0   
+Color.BLUE   | 4    | 1   
+Color.BLUE   | 3    | 1   
+--- STOPPED --- 
 
 == BLANK == 
 301.0           | Color.WHITE  | 79           | 4           
@@ -33,24 +73,31 @@
 352.0           | Color.WHITE  | 85           | 4           
 364.0           | Color.WHITE  | 63           | 4       
 
-== LIGHT GREEN STATION == 
-377.0           | Color.WHITE  | 50           | 3           
-389.0           | Color.WHITE  | 52           | 3           
-401.0           | Color.WHITE  | 51           | 3           
-413.0           | Color.WHITE  | 53           | 3           
-426.0           | Color.WHITE  | 51           | 3           
-438.0           | Color.WHITE  | 50           | 3           
-450.0           | Color.WHITE  | 50           | 3           
-463.0           | Color.WHITE  | 51           | 3           
-476.0           | Color.WHITE  | 50           | 3           
-488.0           | Color.WHITE  | 50           | 3           
-500.0           | Color.WHITE  | 51           | 3           
-513.0           | Color.WHITE  | 52           | 3           
-525.0           | Color.WHITE  | 54           | 2           
-538.0           | Color.WHITE  | 53           | 3           
-550.0           | Color.WHITE  | 51           | 2           
-564.0           | Color.WHITE  | 50           | 3           
-576.0           | Color.WHITE  | 61           | 4     
+== LIGHT GREEN STATION / CHANGE TO YELLOW STATION == 
+olor.YELLOW | 64   | 1   
+Color.YELLOW | 74   | 2   
+Color.WHITE  | 100  | 5   
+Color.WHITE  | 100  | 4   
+Color.YELLOW | 60   | 1   
+Color.YELLOW | 53   | 1   
+Color.YELLOW | 54   | 2   
+Color.YELLOW | 54   | 2   
+Color.YELLOW | 53   | 1   
+Color.YELLOW | 51   | 1   
+Color.WHITE  | 60   | 4   
+Color.YELLOW | 41   | 4   
+Color.YELLOW | 76   | 2   
+Color.YELLOW | 64   | 2   
+Color.YELLOW | 63   | 1   
+Color.YELLOW | 64   | 1   
+Color.YELLOW | 63   | 2   
+Color.YELLOW | 62   | 2   
+Color.YELLOW | 62   | 2   
+Color.YELLOW | 63   | 1   
+Color.YELLOW | 34   | 1   
+Color.YELLOW | 47   | 1   
+Color.YELLOW | 47   | 1   
+Color.YELLOW | 48   | 1 
 
 == BLANK == 
 589.0           | Color.WHITE  | 90           | 4           
@@ -64,22 +111,38 @@
 688.0           | Color.WHITE  | 99           | 3       
 
 == ORANGE STATION == 
-700.0           | Color.RED    | 100          | 3           
-713.0           | Color.RED    | 100          | 3           
-726.0           | Color.RED    | 100          | 3           
-739.0           | Color.RED    | 100          | 3           
-752.0           | Color.RED    | 100          | 3           
-765.0           | Color.RED    | 100          | 3           
-777.0           | Color.RED    | 100          | 3           
-790.0           | Color.RED    | 100          | 3           
-803.0           | Color.RED    | 100          | 3           
-815.0           | Color.RED    | 100          | 3           
-828.0           | Color.RED    | 100          | 3           
-840.0           | Color.RED    | 100          | 3           
-853.0           | Color.RED    | 100          | 3           
-866.0           | Color.RED    | 100          | 2           
-878.0           | Color.RED    | 100          | 3           
-891.0           | Color.RED    | 100          | 3           
+--- NEW RECORDING ---
+Color Code | Refl | Amb
+Color.RED    | 61   | 2   
+Color.RED    | 56   | 2   
+Color.RED    | 78   | 2   
+Color.RED    | 67   | 2   
+Color.RED    | 73   | 5   
+Color.RED    | 16   | 1   
+Color.RED    | 8    | 0   
+Color.RED    | 8    | 0   
+Color.RED    | 8    | 0   
+Color.RED    | 5    | 0   
+Color.RED    | 64   | 5   
+Color.RED    | 74   | 3   
+Color.RED    | 64   | 2   
+Color.RED    | 64   | 2   
+Color.RED    | 65   | 2   
+Color.RED    | 64   | 2   
+Color.RED    | 64   | 2   
+Color.RED    | 64   | 2   
+Color.RED    | 63   | 2   
+Color.RED    | 63   | 2   
+Color.RED    | 64   | 2   
+Color.RED    | 69   | 3   
+Color.RED    | 100  | 5   
+Color.RED    | 16   | 1   
+Color.RED    | 18   | 0   
+Color.RED    | 17   | 0   
+Color.RED    | 18   | 1   
+Color.RED    | 17   | 1   
+Color.RED    | 18   | 1   
+--- STOPPED ---        
 
 == BLANK ==
 903.0           | Color.WHITE  | 92           | 4           

@@ -104,14 +104,14 @@ def pick_and_drop():
 def check_station_logic(target_name, color, reflection):
     if target_name == "Dark Blue Station":
         return color == Color.BLUE and 18 <= reflection <= 25
-    elif target_name == "Light Green Station":
-        return color == Color.WHITE and 48 <= reflection <= 60
+    elif target_name == "Red Station":
+        return color == Color.RED and reflection >= 95
     elif target_name == "Orange Station":
         return color == Color.RED and reflection >= 95
     return False
 
 # Mission State
-STATION_SEQUENCE = ["Plastic Station", "Paper Station", "Other Station"]
+STATION_SEQUENCE = ["Plastic Station", "Other Station", "Paper Station"]
 current_target_idx = 0
 corners_passed = 0
 white_start_dist = -1

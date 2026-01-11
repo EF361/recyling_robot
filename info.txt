@@ -12,8 +12,8 @@ https://gemini.google.com/app/8ed14680446f7b79
 
 trash type: 
 1 = Dark Blue Station(Plastic)
-2 = Light Green Station (Paper)
-3 = Red/Orange (Others)
+2 = Light Green Station (Others)
+3 = Red/Orange (Paper)
 
 paper: 
 1. color: 6
@@ -47,3 +47,5 @@ light sensor color mode:
 
 from the starting position: 
 60cm -> corner -> 104cm -> corner -> 48cm -> corner -> 5cm -> green station (width: 3cm) -> 29cm -> yellow station(width: 3cm ) ->37cm ->orange station (width: 3cm) -> 17cm -> corner -> starting position
+
+ultrasonic sensor goes to 2500mm after the object is placed < 300mm
