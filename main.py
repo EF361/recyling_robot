@@ -37,7 +37,8 @@ CLAMP_OPEN_ANGLE = -70
 TRASH_DB = [
     ("None",    0, 5,   [None, Color.BLACK]),
     ("Plastic", 6, 100, [Color.BLACK, Color.BROWN, Color.YELLOW, Color.BLUE]),
-    ("Paper",   21, 100, [Color.WHITE, Color.BLUE])
+    ("Paper",   21, 100, [Color.WHITE, Color.BLUE]),
+    ("Others", 0, 100, [Color.RED, Color.GREEN, Color.YELLOW, Color.BROWN])
 ]
 
 def initialize():
