@@ -59,7 +59,7 @@ def unload_sequence():
     hardware.robot.stop()
     
     # 3. 🆕 EXTRA NUDGE (Move forward a bit more)
-    # Drives slowly (30 speed) for 1 second to clear the gap
+    # Drives slowly (30 speed) for 3 seconds to clear the gap
     hardware.robot.drive(30, 0)
     wait(3000)
     hardware.robot.stop()
